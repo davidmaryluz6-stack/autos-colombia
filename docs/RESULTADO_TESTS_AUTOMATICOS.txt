@@ -1,0 +1,110 @@
+
+> autos-colombia-api@1.0.0 test
+> node --test tests/*.test.js
+
+TAP version 13
+# Subtest: la sesión firmada se verifica
+ok 1 - la sesión firmada se verifica
+  ---
+  duration_ms: 2.333619
+  type: 'test'
+  ...
+# Subtest: sesión manipulada es rechazada
+ok 2 - sesión manipulada es rechazada
+  ---
+  duration_ms: 0.521647
+  type: 'test'
+  ...
+# Subtest: normaliza placa
+ok 3 - normaliza placa
+  ---
+  duration_ms: 3.777896
+  type: 'test'
+  ...
+# Subtest: placa inválida
+ok 4 - placa inválida
+  ---
+  duration_ms: 0.602288
+  type: 'test'
+  ...
+# Subtest: normaliza celda
+ok 5 - normaliza celda
+  ---
+  duration_ms: 0.27892
+  type: 'test'
+  ...
+# Subtest: evita id inválido
+ok 6 - evita id inválido
+  ---
+  duration_ms: 0.346412
+  type: 'test'
+  ...
+# Subtest: no acepta novedad vacía
+ok 7 - no acepta novedad vacía
+  ---
+  duration_ms: 0.344469
+  type: 'test'
+  ...
+# Subtest: acepta novedad válida
+ok 8 - acepta novedad válida
+  ---
+  duration_ms: 0.249186
+  type: 'test'
+  ...
+# Subtest: fechas en orden
+ok 9 - fechas en orden
+  ---
+  duration_ms: 0.414234
+  type: 'test'
+  ...
+# Subtest: celda mixta
+ok 10 - celda mixta
+  ---
+  duration_ms: 0.250958
+  type: 'test'
+  ...
+# Subtest: moto en celda automóvil denegada
+ok 11 - moto en celda automóvil denegada
+  ---
+  duration_ms: 0.63658
+  type: 'test'
+  ...
+# Subtest: auto en celda moto denegado
+ok 12 - auto en celda moto denegado
+  ---
+  duration_ms: 0.881149
+  type: 'test'
+  ...
+# Subtest: valida y normaliza un vehiculo nuevo
+ok 13 - valida y normaliza un vehiculo nuevo
+  ---
+  duration_ms: 1.488995
+  type: 'test'
+  ...
+# Subtest: rechaza tipo de vehiculo incompatible con MySQL
+ok 14 - rechaza tipo de vehiculo incompatible con MySQL
+  ---
+  duration_ms: 0.29167
+  type: 'test'
+  ...
+# Subtest: rechaza fecha de vencimiento inexistente
+ok 15 - rechaza fecha de vencimiento inexistente
+  ---
+  duration_ms: 0.269276
+  type: 'test'
+  ...
+# Subtest: exige autorizacion booleana
+ok 16 - exige autorizacion booleana
+  ---
+  duration_ms: 0.251309
+  type: 'test'
+  ...
+1..16
+# tests 16
+# suites 0
+# pass 16
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 128.183077
