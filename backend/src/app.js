@@ -24,6 +24,13 @@ import {
   validarClienteActualizar,
   validarCeldaCrear,
   validarCeldaActualizar,
+  ESTADOS_PAGO,
+  configPagos,
+  mesActualUtc,
+  normalizarPeriodo,
+  validarPago,
+  validarAnulacionPago,
+  numeroComprobante,
 } from './validation.js';
 
 export function crearApp(repo = defaultRepo, dbPool = pool) {
@@ -367,6 +374,101 @@ export function crearApp(repo = defaultRepo, dbPool = pool) {
   app.patch('/api/celdas/:id', requiereRol('ADMIN'), actualizarCeldaHandler);
 
   // =========================================================================
+  // ITERACIÓN 3 · GESTIÓN DE PAGOS (RF3-P01 a RF3-P08)
+  // ADMIN y OPERADOR registran y consultan; solo ADMIN anula.
+  // =========================================================================
+  app.get('/api/pagos/config', requiereRol('ADMIN', 'OPERADOR'), (_req, res) => {
+    const {valorMaximo, valorMensualReferencia, mesesCartera} = configPagos();
+    res.json({valorMaximo, valorMensualReferencia, mesesCartera, periodoActual: mesActualUtc()});
+  });
+
+  app.get('/api/pagos/cartera', requiereRol('ADMIN', 'OPERADOR'), async (req, res, next) => {
+    try {
+      const cfg = configPagos();
+      const periodo = req.query.periodo ? normalizarPeriodo(req.query.periodo) : mesActualUtc();
+      const pendientes = await repo.consultarCartera({
+        periodo,
+        meses: cfg.mesesCartera,
+        valorReferencia: cfg.valorMensualReferencia,
+      });
+      res.json({periodo, mesesEvaluados: cfg.mesesCartera, total: pendientes.length, pendientes});
+    } catch (e) {
+      next(e);
+    }
+  });
+
+  app.get('/api/pagos', requiereRol('ADMIN', 'OPERADOR'), async (req, res, next) => {
+    try {
+      const placa = String(req.query.placa || '').toUpperCase().replace(/[^A-Z0-9-]/g, '').slice(0, 10);
+      const clienteId = req.query.clienteId ? parseId(req.query.clienteId) : '';
+      const periodo = req.query.periodo ? normalizarPeriodo(req.query.periodo) : '';
+      const estado = req.query.estado ? String(req.query.estado).trim().toUpperCase() : '';
+      if (estado && !ESTADOS_PAGO.has(estado)) throw new UserError('Estado de pago no válido.');
+      res.json(await repo.listarPagos({placa, clienteId, periodo, estado}));
+    } catch (e) {
+      next(e);
+    }
+  });
+
+  app.post('/api/pagos', requiereRol('ADMIN', 'OPERADOR'), async (req, res, next) => {
+    try {
+      const datos = validarPago(req.body || {});
+      const pago = await repo.registrarPago({...datos, usuarioId: req.user.id});
+      res.status(201).json({ok: true, mensaje: 'Pago registrado correctamente.', pago});
+    } catch (e) {
+      next(e);
+    }
+  });
+
+  app.get('/api/pagos/:id', requiereRol('ADMIN', 'OPERADOR'), async (req, res, next) => {
+    try {
+      const pago = await repo.detallePago(parseId(req.params.id));
+      if (!pago) throw new UserError('Pago no encontrado.', 404);
+      res.json({...pago, comprobante: numeroComprobante(pago.id)});
+    } catch (e) {
+      next(e);
+    }
+  });
+
+  app.get('/api/pagos/:id/comprobante', requiereRol('ADMIN', 'OPERADOR'), async (req, res, next) => {
+    try {
+      const p = await repo.detallePago(parseId(req.params.id));
+      if (!p) throw new UserError('Pago no encontrado.', 404);
+      res.json({
+        numero: numeroComprobante(p.id),
+        establecimiento: 'Autos Colombia',
+        documentoInformativo: 'Comprobante interno de pago. No es factura electrónica ni documento tributario.',
+        cliente: p.cliente,
+        documento: p.documento,
+        placa: p.placa,
+        periodo: String(p.periodo).slice(0, 7),
+        valor: p.valor,
+        metodo: p.metodo,
+        referencia: p.referencia,
+        estado: p.estado,
+        fechaPagoUtc: p.fecha_pago_utc,
+        registradoPor: p.registrado_por,
+        ...(p.estado === 'ANULADO' ? {motivoAnulacion: p.motivo_anulacion, anuladoPor: p.anulado_por} : {}),
+      });
+    } catch (e) {
+      next(e);
+    }
+  });
+
+  const anularPagoHandler = async (req, res, next) => {
+    try {
+      const id = parseId(req.params.id);
+      const {motivo} = validarAnulacionPago(req.body || {});
+      const pago = await repo.anularPago(id, motivo, req.user.id);
+      res.json({ok: true, mensaje: 'Pago anulado correctamente.', pago});
+    } catch (e) {
+      next(e);
+    }
+  };
+  app.post('/api/pagos/:id/anular', requiereRol('ADMIN'), anularPagoHandler);
+  app.patch('/api/pagos/:id/anular', requiereRol('ADMIN'), anularPagoHandler);
+
+  // =========================================================================
   // ITERACIÓN 1 · MOVIMIENTOS, NOVEDADES Y AUDITORÍA
   // =========================================================================
   app.get('/api/movimientos', async (req, res, next) => {
@@ -473,6 +575,12 @@ export function crearApp(repo = defaultRepo, dbPool = pool) {
       }
       if (msg.includes('uq_clientes_documento')) {
         return res.status(409).json({error: 'Documento duplicado: ya pertenece a otro cliente.'});
+      }
+      if (msg.includes('uq_pagos_periodo_activo')) {
+        return res.status(409).json({error: 'Ya existe un pago registrado para ese vehículo y periodo.'});
+      }
+      if (msg.includes('uq_pagos_referencia_activa')) {
+        return res.status(409).json({error: 'La referencia ya fue utilizada en otro pago registrado.'});
       }
       if (msg.includes('uq_celdas_codigo')) {
         return res.status(409).json({error: 'El código de celda ya existe, incluso si está deshabilitada.'});

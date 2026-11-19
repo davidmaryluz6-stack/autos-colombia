@@ -1,0 +1,338 @@
+
+> autos-colombia-api@1.0.0 test
+> node --test tests/*.test.js
+
+TAP version 13
+# Subtest: Flujo integral Iteración 2: Cuentas, Permisos, Clientes, Celdas y Auditoría
+ok 1 - Flujo integral Iteración 2: Cuentas, Permisos, Clientes, Celdas y Auditoría
+  ---
+  duration_ms: 2459.7039
+  type: 'test'
+  ...
+# Subtest: CP3-01 valor válido se normaliza a dos decimales
+ok 2 - CP3-01 valor válido se normaliza a dos decimales
+  ---
+  duration_ms: 5.3918
+  type: 'test'
+  ...
+# Subtest: CP3-02 rechaza valor cero, negativo, texto y exceso
+ok 3 - CP3-02 rechaza valor cero, negativo, texto y exceso
+  ---
+  duration_ms: 3.0235
+  type: 'test'
+  ...
+# Subtest: CP3-03 periodo normaliza AAAA-MM y rechaza formatos inválidos
+ok 4 - CP3-03 periodo normaliza AAAA-MM y rechaza formatos inválidos
+  ---
+  duration_ms: 4.1287
+  type: 'test'
+  ...
+# Subtest: CP3-04 rechaza periodos con más de 12 meses de anticipación
+ok 5 - CP3-04 rechaza periodos con más de 12 meses de anticipación
+  ---
+  duration_ms: 0.7064
+  type: 'test'
+  ...
+# Subtest: CP3-05 referencia obligatoria si el método no es efectivo
+ok 6 - CP3-05 referencia obligatoria si el método no es efectivo
+  ---
+  duration_ms: 1.4392
+  type: 'test'
+  ...
+# Subtest: CP3-06 método inválido y observación excesiva
+ok 7 - CP3-06 método inválido y observación excesiva
+  ---
+  duration_ms: 0.5815
+  type: 'test'
+  ...
+# Subtest: CP3-07 referencia con caracteres peligrosos se rechaza
+ok 8 - CP3-07 referencia con caracteres peligrosos se rechaza
+  ---
+  duration_ms: 0.3644
+  type: 'test'
+  ...
+# Subtest: CP3-08 motivo de anulación mínimo
+ok 9 - CP3-08 motivo de anulación mínimo
+  ---
+  duration_ms: 0.6328
+  type: 'test'
+  ...
+# Subtest: CP3-09 número de comprobante y periodos de cartera
+ok 10 - CP3-09 número de comprobante y periodos de cartera
+  ---
+  duration_ms: 3.1407
+  type: 'test'
+  ...
+# Subtest: CP3-10 configuración por defecto no inventa tarifa
+ok 11 - CP3-10 configuración por defecto no inventa tarifa
+  ---
+  duration_ms: 1.448
+  type: 'test'
+  ...
+# Subtest: CP3-11 operador registra pago y consulta comprobante; queda auditado
+ok 12 - CP3-11 operador registra pago y consulta comprobante; queda auditado
+  ---
+  duration_ms: 238.5578
+  type: 'test'
+  ...
+# Subtest: CP3-12 pago duplicado vehículo+periodo devuelve 409
+ok 13 - CP3-12 pago duplicado vehículo+periodo devuelve 409
+  ---
+  duration_ms: 114.9626
+  type: 'test'
+  ...
+# Subtest: CP3-13 referencia repetida devuelve 409
+ok 14 - CP3-13 referencia repetida devuelve 409
+  ---
+  duration_ms: 117.6249
+  type: 'test'
+  ...
+# Subtest: CP3-14 valor inválido, vehículo inexistente y cliente inactivo
+ok 15 - CP3-14 valor inválido, vehículo inexistente y cliente inactivo
+  ---
+  duration_ms: 122.5964
+  type: 'test'
+  ...
+# Subtest: CP3-15 sin sesión se rechaza con 401
+ok 16 - CP3-15 sin sesión se rechaza con 401
+  ---
+  duration_ms: 112.3313
+  type: 'test'
+  ...
+# Subtest: CP3-16 solo ADMIN anula; OPERADOR recibe 403
+ok 17 - CP3-16 solo ADMIN anula; OPERADOR recibe 403
+  ---
+  duration_ms: 103.3662
+  type: 'test'
+  ...
+# Subtest: CP3-17 tras anular, el mismo periodo puede registrarse de nuevo
+ok 18 - CP3-17 tras anular, el mismo periodo puede registrarse de nuevo
+  ---
+  duration_ms: 111.8326
+  type: 'test'
+  ...
+# Subtest: CP3-18 historial con filtros y filtros inválidos
+ok 19 - CP3-18 historial con filtros y filtros inválidos
+  ---
+  duration_ms: 119.2701
+  type: 'test'
+  ...
+# Subtest: CP3-19 cartera: vehículos sin pago; excluye clientes inactivos; baja al pagar
+ok 20 - CP3-19 cartera: vehículos sin pago; excluye clientes inactivos; baja al pagar
+  ---
+  duration_ms: 99.7918
+  type: 'test'
+  ...
+# Subtest: CP3-20 regresión: rutas de iteraciones previas siguen protegidas
+ok 21 - CP3-20 regresión: rutas de iteraciones previas siguen protegidas
+  ---
+  duration_ms: 106.9077
+  type: 'test'
+  ...
+# Subtest: la sesión firmada se verifica
+ok 22 - la sesión firmada se verifica
+  ---
+  duration_ms: 7.0431
+  type: 'test'
+  ...
+# Subtest: sesión manipulada es rechazada
+ok 23 - sesión manipulada es rechazada
+  ---
+  duration_ms: 0.9747
+  type: 'test'
+  ...
+# Subtest: normaliza placa
+ok 24 - normaliza placa
+  ---
+  duration_ms: 5.0285
+  type: 'test'
+  ...
+# Subtest: placa inválida
+ok 25 - placa inválida
+  ---
+  duration_ms: 1.5658
+  type: 'test'
+  ...
+# Subtest: normaliza celda
+ok 26 - normaliza celda
+  ---
+  duration_ms: 1.6722
+  type: 'test'
+  ...
+# Subtest: evita id inválido
+ok 27 - evita id inválido
+  ---
+  duration_ms: 0.9085
+  type: 'test'
+  ...
+# Subtest: no acepta novedad vacía
+ok 28 - no acepta novedad vacía
+  ---
+  duration_ms: 1.7366
+  type: 'test'
+  ...
+# Subtest: acepta novedad válida
+ok 29 - acepta novedad válida
+  ---
+  duration_ms: 0.6551
+  type: 'test'
+  ...
+# Subtest: fechas en orden
+ok 30 - fechas en orden
+  ---
+  duration_ms: 2.2668
+  type: 'test'
+  ...
+# Subtest: celda mixta
+ok 31 - celda mixta
+  ---
+  duration_ms: 1.0531
+  type: 'test'
+  ...
+# Subtest: moto en celda automóvil denegada
+ok 32 - moto en celda automóvil denegada
+  ---
+  duration_ms: 1.5605
+  type: 'test'
+  ...
+# Subtest: auto en celda moto denegado
+ok 33 - auto en celda moto denegado
+  ---
+  duration_ms: 1.5403
+  type: 'test'
+  ...
+# Subtest: valida y normaliza un vehiculo nuevo
+ok 34 - valida y normaliza un vehiculo nuevo
+  ---
+  duration_ms: 3.7151
+  type: 'test'
+  ...
+# Subtest: rechaza tipo de vehiculo incompatible con MySQL
+ok 35 - rechaza tipo de vehiculo incompatible con MySQL
+  ---
+  duration_ms: 0.7139
+  type: 'test'
+  ...
+# Subtest: rechaza fecha de vencimiento inexistente
+ok 36 - rechaza fecha de vencimiento inexistente
+  ---
+  duration_ms: 0.8438
+  type: 'test'
+  ...
+# Subtest: exige autorizacion booleana
+ok 37 - exige autorizacion booleana
+  ---
+  duration_ms: 4.0424
+  type: 'test'
+  ...
+# Subtest: normaliza usuario de acceso
+ok 38 - normaliza usuario de acceso
+  ---
+  duration_ms: 0.6712
+  type: 'test'
+  ...
+# Subtest: rechaza usuario con caracteres inválidos
+ok 39 - rechaza usuario con caracteres inválidos
+  ---
+  duration_ms: 0.7452
+  type: 'test'
+  ...
+# Subtest: valida creación de cuenta
+ok 40 - valida creación de cuenta
+  ---
+  duration_ms: 1.3649
+  type: 'test'
+  ...
+# Subtest: rechaza contraseña corta al crear cuenta
+ok 41 - rechaza contraseña corta al crear cuenta
+  ---
+  duration_ms: 0.6607
+  type: 'test'
+  ...
+# Subtest: valida actualización parcial de cuenta
+ok 42 - valida actualización parcial de cuenta
+  ---
+  duration_ms: 0.813
+  type: 'test'
+  ...
+# Subtest: valida restablecimiento de credenciales con confirmación
+ok 43 - valida restablecimiento de credenciales con confirmación
+  ---
+  duration_ms: 0.6526
+  type: 'test'
+  ...
+# Subtest: rechaza confirmación distinta en credenciales
+ok 44 - rechaza confirmación distinta en credenciales
+  ---
+  duration_ms: 0.7735
+  type: 'test'
+  ...
+# Subtest: normaliza documento de cliente
+ok 45 - normaliza documento de cliente
+  ---
+  duration_ms: 0.7527
+  type: 'test'
+  ...
+# Subtest: valida creación de cliente con contacto opcional
+ok 46 - valida creación de cliente con contacto opcional
+  ---
+  duration_ms: 1.7102
+  type: 'test'
+  ...
+# Subtest: rechaza correo inválido en cliente
+ok 47 - rechaza correo inválido en cliente
+  ---
+  duration_ms: 0.9347
+  type: 'test'
+  ...
+# Subtest: valida actualización de estado de cliente
+ok 48 - valida actualización de estado de cliente
+  ---
+  duration_ms: 1.0514
+  type: 'test'
+  ...
+# Subtest: valida creación de celda
+ok 49 - valida creación de celda
+  ---
+  duration_ms: 1.158
+  type: 'test'
+  ...
+# Subtest: rechaza tipo de celda inválido
+ok 50 - rechaza tipo de celda inválido
+  ---
+  duration_ms: 1.3213
+  type: 'test'
+  ...
+# Subtest: valida actualización de celda
+ok 51 - valida actualización de celda
+  ---
+  duration_ms: 0.8317
+  type: 'test'
+  ...
+# Subtest: impide deshabilitar una celda ocupada (RF2-C05)
+ok 52 - impide deshabilitar una celda ocupada (RF2-C05)
+  ---
+  duration_ms: 1.7875
+  type: 'test'
+  ...
+# Subtest: impide cambiar una celda ocupada a un tipo incompatible (RF2-C05 / RF2-C07)
+ok 53 - impide cambiar una celda ocupada a un tipo incompatible (RF2-C05 / RF2-C07)
+  ---
+  duration_ms: 0.7311
+  type: 'test'
+  ...
+# Subtest: permite cambiar tipo o deshabilitar cuando la celda está libre
+ok 54 - permite cambiar tipo o deshabilitar cuando la celda está libre
+  ---
+  duration_ms: 0.9587
+  type: 'test'
+  ...
+1..54
+# tests 54
+# suites 0
+# pass 54
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 3712.7459

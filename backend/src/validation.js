@@ -238,3 +238,99 @@ export const validarCambioCeldaOcupada = (celdaActual, cambios) => {
     }
   }
 };
+
+// =============================================================================
+// ITERACIÓN 3 · GESTIÓN DE PAGOS
+// Reglas configurables por variables de entorno (ver backend/.env.example).
+// El enunciado NO define tarifas ni mora: no se inventan valores comerciales.
+// =============================================================================
+export const METODOS_PAGO = new Set(['EFECTIVO', 'TRANSFERENCIA', 'TARJETA', 'OTRO']);
+export const ESTADOS_PAGO = new Set(['REGISTRADO', 'ANULADO']);
+
+export const configPagos = () => {
+  const num = (v, def) => {
+    const n = Number(v);
+    return v !== undefined && v !== '' && Number.isFinite(n) && n > 0 ? n : def;
+  };
+  return {
+    valorMaximo: num(process.env.PAGO_VALOR_MAXIMO, 10000000),
+    // Opcional: si no se define, el sistema NO sugiere ni exige ningún valor.
+    valorMensualReferencia: num(process.env.PAGO_VALOR_MENSUAL, null),
+    mesesCartera: Math.min(24, Math.floor(num(process.env.PAGO_MESES_CARTERA, 1))),
+  };
+};
+
+export const mesActualUtc = (ahora = new Date()) => `${ahora.toISOString().slice(0, 7)}-01`;
+
+// Acepta "YYYY-MM" o "YYYY-MM-01" y devuelve el primer día del mes: "YYYY-MM-01".
+export const normalizarPeriodo = (v, ahora = new Date()) => {
+  const s = String(v ?? '').trim();
+  const m = /^(\d{4})-(0[1-9]|1[0-2])(?:-01)?$/.exec(s);
+  if (!m) throw new UserError('El periodo debe tener el formato AAAA-MM (por ejemplo 2026-11).');
+  const periodo = `${m[1]}-${m[2]}-01`;
+  if (Number(m[1]) < 2000) throw new UserError('El periodo es anterior al rango permitido.');
+  const limite = new Date(Date.UTC(ahora.getUTCFullYear(), ahora.getUTCMonth() + 12, 1));
+  if (periodo > limite.toISOString().slice(0, 10)) {
+    throw new UserError('No se permiten pagos de periodos con más de 12 meses de anticipación.');
+  }
+  return periodo;
+};
+
+export const normalizarValorPago = (v, max = configPagos().valorMaximo) => {
+  const s = String(v ?? '').trim().replace(/\s/g, '');
+  if (typeof v === 'boolean' || !/^\d{1,10}(\.\d{1,2})?$/.test(s)) {
+    throw new UserError('El valor debe ser un número positivo con máximo dos decimales.');
+  }
+  const n = Number(s);
+  if (!(n > 0)) throw new UserError('El valor del pago debe ser mayor que cero.');
+  if (n > max) throw new UserError(`El valor supera el máximo permitido (${max}).`);
+  return n.toFixed(2);
+};
+
+export const normalizarReferencia = (v) => {
+  const s = String(v ?? '').trim().toUpperCase();
+  if (!s) return null;
+  if (!/^[A-Z0-9._\/-]{3,60}$/.test(s)) {
+    throw new UserError('La referencia debe tener entre 3 y 60 caracteres (letras, números, punto, guion o barra).');
+  }
+  return s;
+};
+
+export const validarPago = (b = {}, ahora = new Date()) => {
+  const metodo = String(b.metodo ?? '').trim().toUpperCase();
+  if (!METODOS_PAGO.has(metodo)) throw new UserError('El método de pago no es válido.');
+  const referencia = normalizarReferencia(b.referencia);
+  if (metodo !== 'EFECTIVO' && !referencia) {
+    throw new UserError('La referencia es obligatoria para pagos que no son en efectivo.');
+  }
+  const observacion = String(b.observacion ?? '').trim();
+  if (observacion.length > 255 || /[\u0000-\u001F\u007F]/.test(observacion)) {
+    throw new UserError('La observación admite máximo 255 caracteres válidos.');
+  }
+  return {
+    vehiculoId: parseId(b.vehiculoId),
+    periodo: normalizarPeriodo(b.periodo, ahora),
+    valor: normalizarValorPago(b.valor),
+    metodo,
+    referencia,
+    observacion: observacion || null,
+  };
+};
+
+export const validarAnulacionPago = (b = {}) => {
+  const motivo = String(b.motivo ?? '').replace(/\s+/g, ' ').trim();
+  if (motivo.length < 5 || motivo.length > 255 || /[\u0000-\u001F\u007F]/.test(motivo)) {
+    throw new UserError('El motivo de anulación debe tener entre 5 y 255 caracteres.');
+  }
+  return {motivo};
+};
+
+export const numeroComprobante = (id) => `CP-${String(id).padStart(6, '0')}`;
+
+// Lista de periodos (YYYY-MM-01) desde (periodo - n + 1) hasta periodo.
+export const periodosHasta = (periodo, n) => {
+  const [y, m] = periodo.split('-').map(Number);
+  const out = [];
+  for (let i = n - 1; i >= 0; i--) out.push(new Date(Date.UTC(y, m - 1 - i, 1)).toISOString().slice(0, 10));
+  return out;
+};

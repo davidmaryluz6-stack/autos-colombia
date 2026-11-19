@@ -1,0 +1,71 @@
+# Prueba E2E de la API de pagos contra MySQL 8.0 (Docker) con datos ficticios. Fecha: 2026-11-19T05:13:31.236Z
+
+## PE-01 registrar efectivo
+POST /api/pagos {"vehiculoId":1,"periodo":"2026-11","valor":150000,"metodo":"EFECTIVO"}
+=> HTTP 201
+{"ok":true,"mensaje":"Pago registrado correctamente.","pago":{"id":1,"comprobante":"CP-000001","placa":"ABC123","periodo":"2026-11-01","valor":"150000.00","metodo":"EFECTIVO","estado":"REGISTRADO"}}
+
+## PE-02 duplicado vehiculo+periodo
+POST /api/pagos {"vehiculoId":1,"periodo":"2026-11","valor":150000,"metodo":"EFECTIVO"}
+=> HTTP 409
+{"error":"Ya existe un pago registrado para ese vehículo y periodo."}
+
+## PE-03a transferencia sin referencia
+POST /api/pagos {"vehiculoId":2,"periodo":"2026-11","valor":90000,"metodo":"TRANSFERENCIA"}
+=> HTTP 400
+{"error":"La referencia es obligatoria para pagos que no son en efectivo."}
+
+## PE-03b valor negativo
+POST /api/pagos {"vehiculoId":3,"periodo":"2026-11","valor":-5,"metodo":"EFECTIVO"}
+=> HTTP 400
+{"error":"El valor debe ser un número positivo con máximo dos decimales."}
+
+## PE-04a transferencia con referencia
+POST /api/pagos {"vehiculoId":2,"periodo":"2026-11","valor":90000,"metodo":"TRANSFERENCIA","referencia":"tr-9001"}
+=> HTTP 201
+{"ok":true,"mensaje":"Pago registrado correctamente.","pago":{"id":2,"comprobante":"CP-000002","placa":"HKL482","periodo":"2026-11-01","valor":"90000.00","metodo":"TRANSFERENCIA","estado":"REGISTRADO"}}
+
+## PE-04b referencia repetida
+POST /api/pagos {"vehiculoId":3,"periodo":"2026-11","valor":90000,"metodo":"TRANSFERENCIA","referencia":"TR-9001"}
+=> HTTP 409
+{"error":"La referencia ya fue utilizada en otro pago registrado."}
+
+## PE-05 cartera
+GET /api/pagos/cartera
+=> HTTP 200
+{"periodo":"2026-11-01","mesesEvaluados":1,"total":2,"pendientes":[{"vehiculo_id":4,"placa":"EXP111","tipo":"CAMIONETA","cliente_id":3,"cliente":"Cliente Tres (ficticio)","documento":"DOC-003","telefono":null,"periodo":"2026-11-01","valor_estimado":null},{"vehiculo_id":3,"placa":"FRT905","tipo":"AUTOMOVIL","cliente_id":3,"cliente":"Cliente Tres (ficticio)","documento":"DOC-003","telefono":null,"periodo":"2026-11-01",
+
+## PE-06a historial por placa
+GET /api/pagos?placa=abc
+=> HTTP 200
+[{"id":1,"cliente_id":1,"vehiculo_id":1,"periodo":"2026-11-01","valor":"150000.00","metodo":"EFECTIVO","referencia":null,"observacion":null,"estado":"REGISTRADO","fecha_pago_utc":"2026-11-19 05:13:31","motivo_anulacion":null,"fecha_anulacion_utc":null,"cliente":"Cliente Uno (ficticio)","documento":"DOC-001","placa":"ABC123","tipo_vehiculo":"AUTOMOVIL","registrado_por":"Operador Demo","anulado_por":null}]
+
+## PE-06b comprobante
+GET /api/pagos/1/comprobante
+=> HTTP 200
+{"numero":"CP-000001","establecimiento":"Autos Colombia","documentoInformativo":"Comprobante interno de pago. No es factura electrónica ni documento tributario.","cliente":"Cliente Uno (ficticio)","documento":"DOC-001","placa":"ABC123","periodo":"2026-11","valor":"150000.00","metodo":"EFECTIVO","referencia":null,"estado":"REGISTRADO","fechaPagoUtc":"2026-11-19 05:13:31","registradoPor":"Operador Demo"}
+
+## PE-07a OPERADOR intenta anular
+POST /api/pagos/1/anular {"motivo":"Error de digitación"}
+=> HTTP 403
+{"error":"No tienes permiso para realizar esta operación."}
+
+## PE-07b ADMIN anula
+POST /api/pagos/1/anular {"motivo":"Error de digitación"}
+=> HTTP 200
+{"ok":true,"mensaje":"Pago anulado correctamente.","pago":{"id":1,"cliente_id":1,"vehiculo_id":1,"periodo":"2026-11-01","valor":"150000.00","metodo":"EFECTIVO","referencia":null,"observacion":null,"estado":"ANULADO","fecha_pago_utc":"2026-11-19 05:13:31","motivo_anulacion":"Error de digitación","fecha_anulacion_utc":"2026-11-19 05:13:31","cliente":"Cliente Uno (ficticio)","documento":"DOC-001","placa":"ABC123","tipo_
+
+## PE-07c nuevo pago del periodo anulado
+POST /api/pagos {"vehiculoId":1,"periodo":"2026-11","valor":150000,"metodo":"EFECTIVO"}
+=> HTTP 201
+{"ok":true,"mensaje":"Pago registrado correctamente.","pago":{"id":3,"comprobante":"CP-000003","placa":"ABC123","periodo":"2026-11-01","valor":"150000.00","metodo":"EFECTIVO","estado":"REGISTRADO"}}
+
+## PE-08a auditoria de pagos (ADMIN)
+GET /api/auditoria?entidad=pagos
+=> HTTP 200
+[{"id":17,"accion":"REGISTRAR_PAGO","entidad":"pagos","registro_id":3,"detalles":{"placa":"ABC123","valor":"150000.00","metodo":"EFECTIVO","periodo":"2026-11-01"},"fecha_utc":"2026-11-19 05:13:31","operador":"Operador Demo","usuario_login":"operador","rol_operador":"OPERADOR"},{"id":16,"accion":"ANULAR_PAGO","entidad":"pagos","registro_id":1,"detalles":{"motivo":"Error de digitación"},"fecha_utc":"2026-11-19 05:13:31
+
+## PE-08b sin sesion
+GET /api/pagos
+=> HTTP 401
+{"error":"La sesión expiró. Ingresa nuevamente."}
