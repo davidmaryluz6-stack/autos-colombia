@@ -1,85 +1,136 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1391" width="800" height="1391" font-family="Arial, Helvetica, sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 2056" width="880" height="2056" font-family="Arial, Helvetica, sans-serif">
 <defs>
 <marker id="open" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#063b54" stroke-width="1.5"/></marker>
 <marker id="solid" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto"><path d="M1 1 L9 5 L1 9 z" fill="#063b54"/></marker>
-<marker id="tri" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="11" markerHeight="11" orient="auto"><path d="M1 1 L11 6 L1 11 z" fill="#fff" stroke="#063b54" stroke-width="1.5"/></marker>
+<marker id="tri" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="12" markerHeight="12" orient="auto"><path d="M1 1 L11 6 L1 11 z" fill="#fff" stroke="#063b54" stroke-width="1.5"/></marker>
+<marker id="amb" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#b8751a" stroke-width="1.5"/></marker>
 </defs>
-<rect width="800" height="1391" fill="#fff"/>
-<text x="400" y="26" text-anchor="middle" font-size="16" font-weight="700" fill="#203a47" ><tspan x="400" dy="0">Diagrama de secuencia integrado · Iteraciones 1, 2 y 3</tspan></text>
-<rect x="12" y="44" width="156" height="46" rx="6" fill="#063b54" stroke="#063b54" stroke-width="1.5" />
-<text x="90" y="65" text-anchor="middle" font-size="12" font-weight="400" fill="#fff" ><tspan x="90" dy="0">Usuario</tspan><tspan x="90" dy="14">(OPERADOR / ADMIN)</tspan></text>
-<rect x="212" y="44" width="156" height="46" rx="6" fill="#063b54" stroke="#063b54" stroke-width="1.5" />
-<text x="290" y="65" text-anchor="middle" font-size="12" font-weight="400" fill="#fff" ><tspan x="290" dy="0">Frontend Vue 3</tspan><tspan x="290" dy="14">(App.vue · api.js)</tspan></text>
-<rect x="442" y="44" width="156" height="46" rx="6" fill="#063b54" stroke="#063b54" stroke-width="1.5" />
-<text x="520" y="65" text-anchor="middle" font-size="12" font-weight="400" fill="#fff" ><tspan x="520" dy="0">API Express</tspan><tspan x="520" dy="14">(app.js · validation.js)</tspan></text>
-<rect x="634" y="44" width="156" height="46" rx="6" fill="#063b54" stroke="#063b54" stroke-width="1.5" />
-<text x="712" y="65" text-anchor="middle" font-size="12" font-weight="400" fill="#fff" ><tspan x="712" dy="0">repository.js</tspan><tspan x="712" dy="14">+ MySQL 8</tspan></text>
-<line x1="90" y1="90" x2="90" y2="1371" stroke="#8da2ae" stroke-width="1" stroke-dasharray="6 4" />
-<line x1="290" y1="90" x2="290" y2="1371" stroke="#8da2ae" stroke-width="1" stroke-dasharray="6 4" />
-<line x1="520" y1="90" x2="520" y2="1371" stroke="#8da2ae" stroke-width="1" stroke-dasharray="6 4" />
-<line x1="712" y1="90" x2="712" y2="1371" stroke="#8da2ae" stroke-width="1" stroke-dasharray="6 4" />
-<rect x="20" y="120" width="760" height="24" rx="4" fill="#e8eef7" stroke="none" stroke-width="1.5" />
-<text x="30" y="136" text-anchor="start" font-size="12.5" font-weight="700" fill="#063b54" ><tspan x="30" dy="0">ITERACIÓN 1 · Acceso seguro</tspan></text>
-<line x1="90" y1="176" x2="290" y2="176" stroke="#063b54" stroke-width="1.5"  marker-end="url(#solid)"/>
-<text x="190" y="169" text-anchor="middle" font-size="11.5" font-weight="400" fill="#203a47" ><tspan x="190" dy="0">1. Usuario y contraseña</tspan></text>
-<line x1="290" y1="210" x2="520" y2="210" stroke="#063b54" stroke-width="1.5"  marker-end="url(#solid)"/>
-<text x="405" y="203" text-anchor="middle" font-size="11.5" font-weight="400" fill="#203a47" ><tspan x="405" dy="0">2. POST /api/auth/login</tspan></text>
-<line x1="520" y1="244" x2="712" y2="244" stroke="#063b54" stroke-width="1.5"  marker-end="url(#solid)"/>
-<text x="616" y="237" text-anchor="middle" font-size="11.5" font-weight="400" fill="#203a47" ><tspan x="616" dy="0">3. obtenerUsuario + bcrypt</tspan></text>
-<line x1="520" y1="278" x2="290" y2="278" stroke="#063b54" stroke-width="1.5" stroke-dasharray="6 4" marker-end="url(#open)"/>
-<text x="405" y="271" text-anchor="middle" font-size="11.5" font-weight="400" fill="#203a47" ><tspan x="405" dy="0">4. Cookie HttpOnly firmada (rol)</tspan></text>
-<rect x="20" y="298" width="760" height="24" rx="4" fill="#eaf6ee" stroke="none" stroke-width="1.5" />
-<text x="30" y="314" text-anchor="start" font-size="12.5" font-weight="700" fill="#063b54" ><tspan x="30" dy="0">ITERACIÓN 2 · Clientes y celdas (solo ADMIN)</tspan></text>
-<line x1="290" y1="354" x2="520" y2="354" stroke="#063b54" stroke-width="1.5"  marker-end="url(#solid)"/>
-<text x="405" y="347" text-anchor="middle" font-size="11.5" font-weight="400" fill="#203a47" ><tspan x="405" dy="0">5. POST /api/clientes · /api/celdas</tspan></text>
-<path d="M520 380 h38 v22 h-38" fill="none" stroke="#063b54" stroke-width="1.4" marker-end="url(#open)"/>
-<text x="566" y="386" text-anchor="start" font-size="11.5" font-weight="400" fill="#203a47" ><tspan x="566" dy="0">requiereRol(ADMIN) + validar</tspan></text>
-<line x1="520" y1="436" x2="712" y2="436" stroke="#063b54" stroke-width="1.5"  marker-end="url(#solid)"/>
-<text x="616" y="429" text-anchor="middle" font-size="11.5" font-weight="400" fill="#203a47" ><tspan x="616" dy="0">6. INSERT cliente/celda + auditoría</tspan></text>
-<rect x="20" y="456" width="760" height="24" rx="4" fill="#e8eef7" stroke="none" stroke-width="1.5" />
-<text x="30" y="472" text-anchor="start" font-size="12.5" font-weight="700" fill="#063b54" ><tspan x="30" dy="0">ITERACIÓN 1 · Vehículo y entrada</tspan></text>
-<line x1="290" y1="512" x2="520" y2="512" stroke="#063b54" stroke-width="1.5"  marker-end="url(#solid)"/>
-<text x="405" y="505" text-anchor="middle" font-size="11.5" font-weight="400" fill="#203a47" ><tspan x="405" dy="0">7. POST /api/vehiculos</tspan></text>
-<line x1="520" y1="546" x2="712" y2="546" stroke="#063b54" stroke-width="1.5"  marker-end="url(#solid)"/>
-<text x="616" y="539" text-anchor="middle" font-size="11.5" font-weight="400" fill="#203a47" ><tspan x="616" dy="0">8. INSERT vehiculos + auditoría</tspan></text>
-<line x1="290" y1="580" x2="520" y2="580" stroke="#063b54" stroke-width="1.5"  marker-end="url(#solid)"/>
-<text x="405" y="573" text-anchor="middle" font-size="11.5" font-weight="400" fill="#203a47" ><tspan x="405" dy="0">9. POST /api/movimientos/entrada</tspan></text>
-<line x1="520" y1="614" x2="712" y2="614" stroke="#063b54" stroke-width="1.5"  marker-end="url(#solid)"/>
-<text x="616" y="607" text-anchor="middle" font-size="11.5" font-weight="400" fill="#203a47" ><tspan x="616" dy="0">10. CALL sp_registrar_entrada</tspan></text>
-<line x1="712" y1="648" x2="290" y2="648" stroke="#063b54" stroke-width="1.5" stroke-dasharray="6 4" marker-end="url(#open)"/>
-<text x="501" y="641" text-anchor="middle" font-size="11.5" font-weight="400" fill="#203a47" ><tspan x="501" dy="0">11. Movimiento ACTIVO · celda OCUPADA</tspan></text>
-<rect x="20" y="668" width="760" height="24" rx="4" fill="#fff3e0" stroke="none" stroke-width="1.5" />
-<text x="30" y="684" text-anchor="start" font-size="12.5" font-weight="700" fill="#063b54" ><tspan x="30" dy="0">ITERACIÓN 3 · Gestión de pagos (nuevo)</tspan></text>
-<line x1="290" y1="724" x2="520" y2="724" stroke="#063b54" stroke-width="1.5"  marker-end="url(#solid)"/>
-<text x="405" y="717" text-anchor="middle" font-size="11.5" font-weight="400" fill="#203a47" ><tspan x="405" dy="0">12. GET /api/pagos/cartera</tspan></text>
-<line x1="520" y1="758" x2="712" y2="758" stroke="#063b54" stroke-width="1.5"  marker-end="url(#solid)"/>
-<text x="616" y="751" text-anchor="middle" font-size="11.5" font-weight="400" fill="#203a47" ><tspan x="616" dy="0">13. Vehículos autorizados sin pago</tspan></text>
-<line x1="520" y1="792" x2="290" y2="792" stroke="#063b54" stroke-width="1.5" stroke-dasharray="6 4" marker-end="url(#open)"/>
-<text x="405" y="785" text-anchor="middle" font-size="11.5" font-weight="400" fill="#203a47" ><tspan x="405" dy="0">14. Pendientes por periodo</tspan></text>
-<line x1="290" y1="841" x2="520" y2="841" stroke="#063b54" stroke-width="1.5"  marker-end="url(#solid)"/>
-<text x="405" y="820" text-anchor="middle" font-size="11.5" font-weight="400" fill="#203a47" ><tspan x="405" dy="0">15. POST /api/pagos (vehículo, periodo,</tspan><tspan x="405" dy="14">valor, método, referencia)</tspan></text>
-<path d="M520 882 h38 v22 h-38" fill="none" stroke="#063b54" stroke-width="1.4" marker-end="url(#open)"/>
-<text x="566" y="881" text-anchor="start" font-size="11.5" font-weight="400" fill="#203a47" ><tspan x="566" dy="0">requiereRol(ADMIN|OPERADOR)</tspan><tspan x="566" dy="14">validarPago()</tspan></text>
-<line x1="520" y1="968" x2="712" y2="968" stroke="#063b54" stroke-width="1.5"  marker-end="url(#solid)"/>
-<text x="616" y="933" text-anchor="middle" font-size="11.5" font-weight="400" fill="#203a47" ><tspan x="616" dy="0">16. registrarPago(): BEGIN, FOR UPDATE,</tspan><tspan x="616" dy="14">verificar duplicados, INSERT pagos,</tspan><tspan x="616" dy="14">INSERT auditoría, COMMIT</tspan></text>
-<rect x="460" y="984" width="270" height="26" rx="6" fill="#fff" stroke="#b8751a" stroke-width="1.5" stroke-dasharray="6 4"/>
-<text x="595" y="1001" text-anchor="middle" font-size="11" font-weight="700" fill="#b8751a" ><tspan x="595" dy="0">[duplicado o dato inválido] 409/400 con mensaje</tspan></text>
-<line x1="520" y1="1036" x2="290" y2="1036" stroke="#063b54" stroke-width="1.5" stroke-dasharray="6 4" marker-end="url(#open)"/>
-<text x="405" y="1029" text-anchor="middle" font-size="11.5" font-weight="400" fill="#203a47" ><tspan x="405" dy="0">17. 201 · comprobante CP-nnnnnn</tspan></text>
-<line x1="290" y1="1070" x2="520" y2="1070" stroke="#063b54" stroke-width="1.5"  marker-end="url(#solid)"/>
-<text x="405" y="1063" text-anchor="middle" font-size="11.5" font-weight="400" fill="#203a47" ><tspan x="405" dy="0">18. GET /api/pagos/{id}/comprobante</tspan></text>
-<line x1="520" y1="1104" x2="290" y2="1104" stroke="#063b54" stroke-width="1.5" stroke-dasharray="6 4" marker-end="url(#open)"/>
-<text x="405" y="1097" text-anchor="middle" font-size="11.5" font-weight="400" fill="#203a47" ><tspan x="405" dy="0">19. Comprobante interno (JSON)</tspan></text>
-<line x1="290" y1="1153" x2="520" y2="1153" stroke="#063b54" stroke-width="1.5"  marker-end="url(#solid)"/>
-<text x="405" y="1132" text-anchor="middle" font-size="11.5" font-weight="400" fill="#203a47" ><tspan x="405" dy="0">20. POST /api/pagos/{id}/anular</tspan><tspan x="405" dy="14">(motivo)  · solo ADMIN, si no 403</tspan></text>
-<line x1="520" y1="1187" x2="712" y2="1187" stroke="#063b54" stroke-width="1.5"  marker-end="url(#solid)"/>
-<text x="616" y="1180" text-anchor="middle" font-size="11.5" font-weight="400" fill="#203a47" ><tspan x="616" dy="0">21. UPDATE estado=ANULADO + auditoría</tspan></text>
-<rect x="20" y="1207" width="760" height="24" rx="4" fill="#e8eef7" stroke="none" stroke-width="1.5" />
-<text x="30" y="1223" text-anchor="start" font-size="12.5" font-weight="700" fill="#063b54" ><tspan x="30" dy="0">ITERACIÓN 1 · Salida</tspan></text>
-<line x1="290" y1="1263" x2="520" y2="1263" stroke="#063b54" stroke-width="1.5"  marker-end="url(#solid)"/>
-<text x="405" y="1256" text-anchor="middle" font-size="11.5" font-weight="400" fill="#203a47" ><tspan x="405" dy="0">22. POST /api/movimientos/{id}/salida</tspan></text>
-<line x1="520" y1="1297" x2="712" y2="1297" stroke="#063b54" stroke-width="1.5"  marker-end="url(#solid)"/>
-<text x="616" y="1290" text-anchor="middle" font-size="11.5" font-weight="400" fill="#203a47" ><tspan x="616" dy="0">23. CALL sp_registrar_salida</tspan></text>
-<line x1="520" y1="1331" x2="290" y2="1331" stroke="#063b54" stroke-width="1.5" stroke-dasharray="6 4" marker-end="url(#open)"/>
-<text x="405" y="1324" text-anchor="middle" font-size="11.5" font-weight="400" fill="#203a47" ><tspan x="405" dy="0">24. Salida registrada · celda libre</tspan></text>
+<rect width="880" height="2056" fill="#fff"/>
+<text x="440" y="24" text-anchor="middle" font-size="16" font-weight="700" fill="#203a47" ><tspan x="440" dy="0">Diagrama de secuencia integrado · Iteraciones 1, 2 y 3</tspan></text>
+<rect x="8" y="40" width="164" height="56" rx="6" fill="#063b54" stroke="#063b54" stroke-width="1.5" />
+<text x="90" y="66" text-anchor="middle" font-size="12.5" font-weight="400" fill="#fff" ><tspan x="90" dy="0">Usuario</tspan><tspan x="90" dy="14">(OPERADOR / ADMIN)</tspan></text>
+<line x1="90" y1="96" x2="90" y2="2044" stroke="#8da2ae" stroke-width="1" stroke-dasharray="6 4" />
+<rect x="248" y="40" width="164" height="56" rx="6" fill="#063b54" stroke="#063b54" stroke-width="1.5" />
+<text x="330" y="66" text-anchor="middle" font-size="12.5" font-weight="400" fill="#fff" ><tspan x="330" dy="0">Frontend Vue 3</tspan><tspan x="330" dy="14">(App.vue · api.js)</tspan></text>
+<line x1="330" y1="96" x2="330" y2="2044" stroke="#8da2ae" stroke-width="1" stroke-dasharray="6 4" />
+<rect x="508" y="40" width="164" height="56" rx="6" fill="#063b54" stroke="#063b54" stroke-width="1.5" />
+<text x="590" y="59" text-anchor="middle" font-size="12.5" font-weight="400" fill="#fff" ><tspan x="590" dy="0">API Express</tspan><tspan x="590" dy="14">(app.js · validation.js</tspan><tspan x="590" dy="14">repository.js)</tspan></text>
+<line x1="590" y1="96" x2="590" y2="2044" stroke="#8da2ae" stroke-width="1" stroke-dasharray="6 4" />
+<rect x="698" y="40" width="164" height="56" rx="6" fill="#063b54" stroke="#063b54" stroke-width="1.5" />
+<text x="780" y="73" text-anchor="middle" font-size="12.5" font-weight="400" fill="#fff" ><tspan x="780" dy="0">MySQL 8</tspan></text>
+<line x1="780" y1="96" x2="780" y2="2044" stroke="#8da2ae" stroke-width="1" stroke-dasharray="6 4" />
+<rect x="14" y="122" width="852" height="26" rx="4" fill="#e8eef7" stroke="none" stroke-width="1.5" />
+<text x="24" y="140" text-anchor="start" font-size="13" font-weight="700" fill="#063b54" ><tspan x="24" dy="0">ITERACIÓN 1 · Inicio de sesión</tspan></text>
+<line x1="90" y1="168" x2="330" y2="168" stroke="#063b54" stroke-width="1.5"  marker-end="url(#solid)"/>
+<text x="210" y="162" text-anchor="middle" font-size="12" font-weight="400" fill="#203a47" ><tspan x="210" dy="0">1. Usuario y contraseña</tspan></text>
+<line x1="330" y1="198" x2="590" y2="198" stroke="#063b54" stroke-width="1.5"  marker-end="url(#solid)"/>
+<text x="460" y="192" text-anchor="middle" font-size="12" font-weight="400" fill="#203a47" ><tspan x="460" dy="0">2. POST /api/auth/login</tspan></text>
+<line x1="590" y1="228" x2="780" y2="228" stroke="#063b54" stroke-width="1.5"  marker-end="url(#solid)"/>
+<text x="685" y="222" text-anchor="middle" font-size="12" font-weight="400" fill="#203a47" ><tspan x="685" dy="0">3. SELECT usuarios (obtenerUsuario)</tspan></text>
+<line x1="780" y1="258" x2="590" y2="258" stroke="#063b54" stroke-width="1.5" stroke-dasharray="6 4" marker-end="url(#open)"/>
+<text x="685" y="252" text-anchor="middle" font-size="12" font-weight="400" fill="#203a47" ><tspan x="685" dy="0">4. Fila del usuario</tspan></text>
+<path d="M590 282 h34 v12 h-34" fill="none" stroke="#063b54" stroke-width="1.4" marker-end="url(#open)"/>
+<text x="632" y="288" text-anchor="start" font-size="12" font-weight="400" fill="#203a47" ><tspan x="632" dy="0">5. bcrypt.compare · generarToken</tspan></text>
+<line x1="590" y1="318" x2="330" y2="318" stroke="#063b54" stroke-width="1.5" stroke-dasharray="6 4" marker-end="url(#open)"/>
+<text x="460" y="312" text-anchor="middle" font-size="12" font-weight="400" fill="#203a47" ><tspan x="460" dy="0">6. 200 · Set-Cookie autos_session (HttpOnly)</tspan></text>
+<rect x="14" y="338" width="852" height="26" rx="4" fill="#eaf6ee" stroke="none" stroke-width="1.5" />
+<text x="24" y="356" text-anchor="start" font-size="13" font-weight="700" fill="#063b54" ><tspan x="24" dy="0">ITERACIÓN 2 · Registro de un cliente (solo ADMIN)</tspan></text>
+<line x1="330" y1="398" x2="590" y2="398" stroke="#063b54" stroke-width="1.5"  marker-end="url(#solid)"/>
+<text x="460" y="378" text-anchor="middle" font-size="12" font-weight="400" fill="#203a47" ><tspan x="460" dy="0">7. POST /api/clientes</tspan><tspan x="460" dy="14">(análogo: POST /api/celdas)</tspan></text>
+<path d="M590 422 h34 v19 h-34" fill="none" stroke="#063b54" stroke-width="1.4" marker-end="url(#open)"/>
+<text x="632" y="428" text-anchor="start" font-size="12" font-weight="400" fill="#203a47" ><tspan x="632" dy="0">8. requiereSesion · requiereRol</tspan><tspan x="632" dy="14">(ADMIN) · validarClienteCrear()</tspan></text>
+<line x1="590" y1="472" x2="780" y2="472" stroke="#063b54" stroke-width="1.5"  marker-end="url(#solid)"/>
+<text x="685" y="466" text-anchor="middle" font-size="12" font-weight="400" fill="#203a47" ><tspan x="685" dy="0">9. INSERT clientes + INSERT auditoria</tspan></text>
+<line x1="590" y1="502" x2="330" y2="502" stroke="#063b54" stroke-width="1.5" stroke-dasharray="6 4" marker-end="url(#open)"/>
+<text x="460" y="496" text-anchor="middle" font-size="12" font-weight="400" fill="#203a47" ><tspan x="460" dy="0">10. 201 · cliente registrado</tspan></text>
+<rect x="14" y="522" width="852" height="26" rx="4" fill="#e8eef7" stroke="none" stroke-width="1.5" />
+<text x="24" y="540" text-anchor="start" font-size="13" font-weight="700" fill="#063b54" ><tspan x="24" dy="0">ITERACIÓN 1 · Registro de vehículo y entrada</tspan></text>
+<line x1="330" y1="568" x2="590" y2="568" stroke="#063b54" stroke-width="1.5"  marker-end="url(#solid)"/>
+<text x="460" y="562" text-anchor="middle" font-size="12" font-weight="400" fill="#203a47" ><tspan x="460" dy="0">11. POST /api/vehiculos</tspan></text>
+<line x1="590" y1="598" x2="780" y2="598" stroke="#063b54" stroke-width="1.5"  marker-end="url(#solid)"/>
+<text x="685" y="592" text-anchor="middle" font-size="12" font-weight="400" fill="#203a47" ><tspan x="685" dy="0">12. INSERT vehiculos + INSERT auditoria</tspan></text>
+<line x1="590" y1="628" x2="330" y2="628" stroke="#063b54" stroke-width="1.5" stroke-dasharray="6 4" marker-end="url(#open)"/>
+<text x="460" y="622" text-anchor="middle" font-size="12" font-weight="400" fill="#203a47" ><tspan x="460" dy="0">13. 201 · vehículo registrado</tspan></text>
+<line x1="330" y1="658" x2="590" y2="658" stroke="#063b54" stroke-width="1.5"  marker-end="url(#solid)"/>
+<text x="460" y="652" text-anchor="middle" font-size="12" font-weight="400" fill="#203a47" ><tspan x="460" dy="0">14. POST /api/movimientos/entrada</tspan></text>
+<line x1="590" y1="688" x2="780" y2="688" stroke="#063b54" stroke-width="1.5"  marker-end="url(#solid)"/>
+<text x="685" y="682" text-anchor="middle" font-size="12" font-weight="400" fill="#203a47" ><tspan x="685" dy="0">15. CALL sp_registrar_entrada</tspan></text>
+<line x1="780" y1="718" x2="590" y2="718" stroke="#063b54" stroke-width="1.5" stroke-dasharray="6 4" marker-end="url(#open)"/>
+<text x="685" y="712" text-anchor="middle" font-size="12" font-weight="400" fill="#203a47" ><tspan x="685" dy="0">16. Movimiento ACTIVO · celda OCUPADA</tspan></text>
+<line x1="590" y1="748" x2="330" y2="748" stroke="#063b54" stroke-width="1.5" stroke-dasharray="6 4" marker-end="url(#open)"/>
+<text x="460" y="742" text-anchor="middle" font-size="12" font-weight="400" fill="#203a47" ><tspan x="460" dy="0">17. 201 · entrada registrada</tspan></text>
+<rect x="14" y="768" width="852" height="26" rx="4" fill="#fff3e0" stroke="none" stroke-width="1.5" />
+<text x="24" y="786" text-anchor="start" font-size="13" font-weight="700" fill="#063b54" ><tspan x="24" dy="0">ITERACIÓN 3 · Abrir el módulo de pagos</tspan></text>
+<line x1="90" y1="814" x2="330" y2="814" stroke="#063b54" stroke-width="1.5"  marker-end="url(#solid)"/>
+<text x="210" y="808" text-anchor="middle" font-size="12" font-weight="400" fill="#203a47" ><tspan x="210" dy="0">18. Abre «Gestión de pagos»</tspan></text>
+<line x1="330" y1="858" x2="590" y2="858" stroke="#063b54" stroke-width="1.5"  marker-end="url(#solid)"/>
+<text x="460" y="838" text-anchor="middle" font-size="12" font-weight="400" fill="#203a47" ><tspan x="460" dy="0">19. GET /api/pagos/config</tspan><tspan x="460" dy="14">GET /api/vehiculos</tspan></text>
+<line x1="590" y1="888" x2="330" y2="888" stroke="#063b54" stroke-width="1.5" stroke-dasharray="6 4" marker-end="url(#open)"/>
+<text x="460" y="882" text-anchor="middle" font-size="12" font-weight="400" fill="#203a47" ><tspan x="460" dy="0">20. Parámetros y vehículos</tspan></text>
+<rect x="14" y="908" width="852" height="26" rx="4" fill="#fff3e0" stroke="none" stroke-width="1.5" />
+<text x="24" y="926" text-anchor="start" font-size="13" font-weight="700" fill="#063b54" ><tspan x="24" dy="0">ITERACIÓN 3 · Registrar un pago</tspan></text>
+<line x1="90" y1="954" x2="330" y2="954" stroke="#063b54" stroke-width="1.5"  marker-end="url(#solid)"/>
+<text x="210" y="948" text-anchor="middle" font-size="12" font-weight="400" fill="#203a47" ><tspan x="210" dy="0">21. Completa el formulario y confirma</tspan></text>
+<line x1="330" y1="984" x2="590" y2="984" stroke="#063b54" stroke-width="1.5"  marker-end="url(#solid)"/>
+<text x="460" y="978" text-anchor="middle" font-size="12" font-weight="400" fill="#203a47" ><tspan x="460" dy="0">22. POST /api/pagos</tspan></text>
+<path d="M590 1008 h34 v19 h-34" fill="none" stroke="#063b54" stroke-width="1.4" marker-end="url(#open)"/>
+<text x="632" y="1014" text-anchor="start" font-size="12" font-weight="400" fill="#203a47" ><tspan x="632" dy="0">23. requiereSesion · requiereRol</tspan><tspan x="632" dy="14">(ADMIN|OPERADOR) · validarPago()</tspan></text>
+<text x="370" y="1062" text-anchor="start" font-size="12" font-weight="700" fill="#b8751a" ><tspan x="370" dy="0">alt  [datos válidos]</tspan></text>
+<line x1="590" y1="1114" x2="780" y2="1114" stroke="#063b54" stroke-width="1.5"  marker-end="url(#solid)"/>
+<text x="685" y="1080" text-anchor="middle" font-size="12" font-weight="400" fill="#203a47" ><tspan x="685" dy="0">24. BEGIN · SELECT vehículo FOR UPDATE</tspan><tspan x="685" dy="14">verificar duplicados · INSERT pagos</tspan><tspan x="685" dy="14">INSERT auditoria · COMMIT</tspan></text>
+<line x1="780" y1="1144" x2="590" y2="1144" stroke="#063b54" stroke-width="1.5" stroke-dasharray="6 4" marker-end="url(#open)"/>
+<text x="685" y="1138" text-anchor="middle" font-size="12" font-weight="400" fill="#203a47" ><tspan x="685" dy="0">25. id del pago</tspan></text>
+<line x1="590" y1="1174" x2="330" y2="1174" stroke="#063b54" stroke-width="1.5" stroke-dasharray="6 4" marker-end="url(#open)"/>
+<text x="460" y="1168" text-anchor="middle" font-size="12" font-weight="400" fill="#203a47" ><tspan x="460" dy="0">26. 201 · comprobante CP-nnnnnn</tspan></text>
+<line x1="350" y1="1194" x2="870" y2="1194" stroke="#b8751a" stroke-width="1.2" stroke-dasharray="6 4" />
+<text x="370" y="1211" text-anchor="start" font-size="12" font-weight="700" fill="#b8751a" ><tspan x="370" dy="0">[dato inválido o duplicado]</tspan></text>
+<line x1="590" y1="1254" x2="330" y2="1254" stroke="#063b54" stroke-width="1.5" stroke-dasharray="6 4" marker-end="url(#open)"/>
+<text x="460" y="1234" text-anchor="middle" font-size="12" font-weight="400" fill="#203a47" ><tspan x="460" dy="0">27. 400 / 409 · mensaje</tspan><tspan x="460" dy="14">(ROLLBACK si hubo BD)</tspan></text>
+<rect x="350" y="1046" width="520" height="228" rx="4" fill="none" stroke="#b8751a" stroke-width="1.2" stroke-dasharray="6 4"/>
+<rect x="14" y="1282" width="852" height="26" rx="4" fill="#fff3e0" stroke="none" stroke-width="1.5" />
+<text x="24" y="1300" text-anchor="start" font-size="13" font-weight="700" fill="#063b54" ><tspan x="24" dy="0">ITERACIÓN 3 · Cartera pendiente</tspan></text>
+<line x1="90" y1="1328" x2="330" y2="1328" stroke="#063b54" stroke-width="1.5"  marker-end="url(#solid)"/>
+<text x="210" y="1322" text-anchor="middle" font-size="12" font-weight="400" fill="#203a47" ><tspan x="210" dy="0">28. Abre «Cartera pendiente»</tspan></text>
+<line x1="330" y1="1358" x2="590" y2="1358" stroke="#063b54" stroke-width="1.5"  marker-end="url(#solid)"/>
+<text x="460" y="1352" text-anchor="middle" font-size="12" font-weight="400" fill="#203a47" ><tspan x="460" dy="0">29. GET /api/pagos/cartera</tspan></text>
+<line x1="590" y1="1402" x2="780" y2="1402" stroke="#063b54" stroke-width="1.5"  marker-end="url(#solid)"/>
+<text x="685" y="1382" text-anchor="middle" font-size="12" font-weight="400" fill="#203a47" ><tspan x="685" dy="0">30. SELECT vehículos autorizados</tspan><tspan x="685" dy="14">y pagos REGISTRADOS del periodo</tspan></text>
+<line x1="780" y1="1432" x2="590" y2="1432" stroke="#063b54" stroke-width="1.5" stroke-dasharray="6 4" marker-end="url(#open)"/>
+<text x="685" y="1426" text-anchor="middle" font-size="12" font-weight="400" fill="#203a47" ><tspan x="685" dy="0">31. Filas</tspan></text>
+<line x1="590" y1="1462" x2="330" y2="1462" stroke="#063b54" stroke-width="1.5" stroke-dasharray="6 4" marker-end="url(#open)"/>
+<text x="460" y="1456" text-anchor="middle" font-size="12" font-weight="400" fill="#203a47" ><tspan x="460" dy="0">32. 200 · pendientes por periodo</tspan></text>
+<rect x="14" y="1482" width="852" height="26" rx="4" fill="#fff3e0" stroke="none" stroke-width="1.5" />
+<text x="24" y="1500" text-anchor="start" font-size="13" font-weight="700" fill="#063b54" ><tspan x="24" dy="0">ITERACIÓN 3 · Comprobante</tspan></text>
+<line x1="330" y1="1528" x2="590" y2="1528" stroke="#063b54" stroke-width="1.5"  marker-end="url(#solid)"/>
+<text x="460" y="1522" text-anchor="middle" font-size="12" font-weight="400" fill="#203a47" ><tspan x="460" dy="0">33. GET /api/pagos/{id}/comprobante</tspan></text>
+<line x1="590" y1="1558" x2="780" y2="1558" stroke="#063b54" stroke-width="1.5"  marker-end="url(#solid)"/>
+<text x="685" y="1552" text-anchor="middle" font-size="12" font-weight="400" fill="#203a47" ><tspan x="685" dy="0">34. SELECT pago + cliente + vehículo</tspan></text>
+<line x1="780" y1="1588" x2="590" y2="1588" stroke="#063b54" stroke-width="1.5" stroke-dasharray="6 4" marker-end="url(#open)"/>
+<text x="685" y="1582" text-anchor="middle" font-size="12" font-weight="400" fill="#203a47" ><tspan x="685" dy="0">35. Fila</tspan></text>
+<line x1="590" y1="1618" x2="330" y2="1618" stroke="#063b54" stroke-width="1.5" stroke-dasharray="6 4" marker-end="url(#open)"/>
+<text x="460" y="1612" text-anchor="middle" font-size="12" font-weight="400" fill="#203a47" ><tspan x="460" dy="0">36. 200 · comprobante interno</tspan></text>
+<rect x="14" y="1638" width="852" height="26" rx="4" fill="#fff3e0" stroke="none" stroke-width="1.5" />
+<text x="24" y="1656" text-anchor="start" font-size="13" font-weight="700" fill="#063b54" ><tspan x="24" dy="0">ITERACIÓN 3 · Anular un pago</tspan></text>
+<line x1="90" y1="1684" x2="330" y2="1684" stroke="#063b54" stroke-width="1.5"  marker-end="url(#solid)"/>
+<text x="210" y="1678" text-anchor="middle" font-size="12" font-weight="400" fill="#203a47" ><tspan x="210" dy="0">37. Indica el motivo y confirma</tspan></text>
+<line x1="330" y1="1714" x2="590" y2="1714" stroke="#063b54" stroke-width="1.5"  marker-end="url(#solid)"/>
+<text x="460" y="1708" text-anchor="middle" font-size="12" font-weight="400" fill="#203a47" ><tspan x="460" dy="0">38. POST /api/pagos/{id}/anular {motivo}</tspan></text>
+<text x="370" y="1748" text-anchor="start" font-size="12" font-weight="700" fill="#b8751a" ><tspan x="370" dy="0">alt  [rol ADMIN]</tspan></text>
+<line x1="590" y1="1786" x2="780" y2="1786" stroke="#063b54" stroke-width="1.5"  marker-end="url(#solid)"/>
+<text x="685" y="1766" text-anchor="middle" font-size="12" font-weight="400" fill="#203a47" ><tspan x="685" dy="0">39. BEGIN · UPDATE pagos estado=ANULADO</tspan><tspan x="685" dy="14">INSERT auditoria · COMMIT</tspan></text>
+<line x1="590" y1="1816" x2="330" y2="1816" stroke="#063b54" stroke-width="1.5" stroke-dasharray="6 4" marker-end="url(#open)"/>
+<text x="460" y="1810" text-anchor="middle" font-size="12" font-weight="400" fill="#203a47" ><tspan x="460" dy="0">40. 200 · pago ANULADO</tspan></text>
+<line x1="350" y1="1836" x2="870" y2="1836" stroke="#b8751a" stroke-width="1.2" stroke-dasharray="6 4" />
+<text x="370" y="1853" text-anchor="start" font-size="12" font-weight="700" fill="#b8751a" ><tspan x="370" dy="0">[rol OPERADOR]</tspan></text>
+<line x1="590" y1="1882" x2="330" y2="1882" stroke="#063b54" stroke-width="1.5" stroke-dasharray="6 4" marker-end="url(#open)"/>
+<text x="460" y="1876" text-anchor="middle" font-size="12" font-weight="400" fill="#203a47" ><tspan x="460" dy="0">41. 403 · sin permiso</tspan></text>
+<rect x="350" y="1732" width="520" height="170" rx="4" fill="none" stroke="#b8751a" stroke-width="1.2" stroke-dasharray="6 4"/>
+<rect x="14" y="1910" width="852" height="26" rx="4" fill="#e8eef7" stroke="none" stroke-width="1.5" />
+<text x="24" y="1928" text-anchor="start" font-size="13" font-weight="700" fill="#063b54" ><tspan x="24" dy="0">ITERACIÓN 1 · Salida</tspan></text>
+<line x1="330" y1="1956" x2="590" y2="1956" stroke="#063b54" stroke-width="1.5"  marker-end="url(#solid)"/>
+<text x="460" y="1950" text-anchor="middle" font-size="12" font-weight="400" fill="#203a47" ><tspan x="460" dy="0">42. POST /api/movimientos/{id}/salida</tspan></text>
+<line x1="590" y1="1986" x2="780" y2="1986" stroke="#063b54" stroke-width="1.5"  marker-end="url(#solid)"/>
+<text x="685" y="1980" text-anchor="middle" font-size="12" font-weight="400" fill="#203a47" ><tspan x="685" dy="0">43. CALL sp_registrar_salida</tspan></text>
+<line x1="590" y1="2016" x2="330" y2="2016" stroke="#063b54" stroke-width="1.5" stroke-dasharray="6 4" marker-end="url(#open)"/>
+<text x="460" y="2010" text-anchor="middle" font-size="12" font-weight="400" fill="#203a47" ><tspan x="460" dy="0">44. 200 · celda liberada</tspan></text>
 </svg>

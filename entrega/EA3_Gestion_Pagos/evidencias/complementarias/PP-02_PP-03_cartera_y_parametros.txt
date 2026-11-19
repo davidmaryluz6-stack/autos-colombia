@@ -1,0 +1,18 @@
+# Instancia de prueba en puerto 3001 con PAGO_MESES_CARTERA=3, PAGO_VALOR_MAXIMO=200000, PAGO_VALOR_MENSUAL=150000 (MySQL 8 Docker, datos ficticios)
+
+## PP-02 Cartera con tres periodos
+HTTP 200 | periodo base 2026-11-01 | mesesEvaluados 3 | total pendientes 9
+Pendientes por placa: {"HKL482":["2026-09","2026-10"],"EXP111":["2026-09","2026-11"],"FRT905":["2026-09","2026-10","2026-11"],"ABC123":["2026-09","2026-10"]}
+valor_estimado en la primera fila: 150000
+
+## PP-03 Parametros configurables
+GET /api/pagos/config => {"valorMaximo":200000,"valorMensualReferencia":150000,"mesesCartera":3,"periodoActual":"2026-11-01"}
+POST valor 250000 (> tope 200000) => HTTP 400 El valor supera el máximo permitido (200000).
+POST valor 200000 (= tope) => HTTP 201 CP-000006
+placa	pagados_en_2026_09_a_11
+ABC123	2026-11
+EXP111	2026-10
+FRT905	NULL
+HKL482	2026-10,2026-11
+
+Nota: la consulta SQL final se ejecuto DESPUES del ultimo POST (pago de HKL482 para 2026-10, CP-000006); por eso HKL482 aparece pagado en 2026-10 en el SQL y como pendiente en la cartera consultada antes.

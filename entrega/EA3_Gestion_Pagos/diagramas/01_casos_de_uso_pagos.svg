@@ -1,57 +1,53 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 640" width="800" height="640" font-family="Arial, Helvetica, sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 610" width="880" height="610" font-family="Arial, Helvetica, sans-serif">
 <defs>
 <marker id="open" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#063b54" stroke-width="1.5"/></marker>
 <marker id="solid" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto"><path d="M1 1 L9 5 L1 9 z" fill="#063b54"/></marker>
-<marker id="tri" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="11" markerHeight="11" orient="auto"><path d="M1 1 L11 6 L1 11 z" fill="#fff" stroke="#063b54" stroke-width="1.5"/></marker>
+<marker id="tri" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="12" markerHeight="12" orient="auto"><path d="M1 1 L11 6 L1 11 z" fill="#fff" stroke="#063b54" stroke-width="1.5"/></marker>
+<marker id="amb" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#b8751a" stroke-width="1.5"/></marker>
 </defs>
-<rect width="800" height="640" fill="#fff"/>
-<text x="400" y="24" text-anchor="middle" font-size="16" font-weight="700" fill="#203a47" ><tspan x="400" dy="0">Diagrama de casos de uso · Gestión de pagos (Iteración 3)</tspan></text>
-<rect x="170" y="44" width="610" height="580" rx="10" fill="#fbfdfe" stroke="#8da2ae" stroke-width="1.5" stroke-dasharray="6 4"/>
-<text x="475" y="66" text-anchor="middle" font-size="13" font-weight="700" fill="#078c97" ><tspan x="475" dy="0">Sistema de información Autos Colombia · Módulo de pagos</tspan></text>
-<g stroke="#063b54" stroke-width="2" fill="none"><circle cx="70" cy="190" r="11" fill="#fff"/><line x1="70" y1="201" x2="70" y2="232"/><line x1="52" y1="212" x2="88" y2="212"/><line x1="70" y1="232" x2="56" y2="254"/><line x1="70" y1="232" x2="84" y2="254"/></g>
-<text x="70" y="272" text-anchor="middle" font-size="13" font-weight="700" fill="#203a47" ><tspan x="70" dy="0">Operador</tspan><tspan x="70" dy="15">(rol OPERADOR)</tspan></text>
-<g stroke="#063b54" stroke-width="2" fill="none"><circle cx="70" cy="440" r="11" fill="#fff"/><line x1="70" y1="451" x2="70" y2="482"/><line x1="52" y1="462" x2="88" y2="462"/><line x1="70" y1="482" x2="56" y2="504"/><line x1="70" y1="482" x2="84" y2="504"/></g>
-<text x="70" y="522" text-anchor="middle" font-size="13" font-weight="700" fill="#203a47" ><tspan x="70" dy="0">Administrador</tspan><tspan x="70" dy="15">(rol ADMIN)</tspan></text>
-<line x1="70" y1="438" x2="70" y2="330" stroke="#063b54" stroke-width="1.5"  marker-end="url(#tri)"/>
-<text x="14" y="385" text-anchor="start" font-size="11" font-weight="400" fill="#8da2ae" font-style="italic"><tspan x="14" dy="0">hereda</tspan></text>
-<ellipse cx="330" cy="112" rx="100" ry="36" fill="#e3f6f7" stroke="#063b54" stroke-width="1.5"/>
-<text x="330" y="103" text-anchor="middle" font-size="12" font-weight="400" fill="#203a47" ><tspan x="330" dy="0">CU3-01</tspan><tspan x="330" dy="14">Registrar pago</tspan><tspan x="330" dy="14">de mensualidad</tspan></text>
-<ellipse cx="330" cy="212" rx="100" ry="36" fill="#e3f6f7" stroke="#063b54" stroke-width="1.5"/>
-<text x="330" y="203" text-anchor="middle" font-size="12" font-weight="400" fill="#203a47" ><tspan x="330" dy="0">CU3-02</tspan><tspan x="330" dy="14">Consultar historial</tspan><tspan x="330" dy="14">de pagos</tspan></text>
-<ellipse cx="330" cy="312" rx="100" ry="36" fill="#e3f6f7" stroke="#063b54" stroke-width="1.5"/>
-<text x="330" y="303" text-anchor="middle" font-size="12" font-weight="400" fill="#203a47" ><tspan x="330" dy="0">CU3-03</tspan><tspan x="330" dy="14">Consultar</tspan><tspan x="330" dy="14">comprobante</tspan></text>
-<ellipse cx="330" cy="412" rx="100" ry="36" fill="#e3f6f7" stroke="#063b54" stroke-width="1.5"/>
-<text x="330" y="403" text-anchor="middle" font-size="12" font-weight="400" fill="#203a47" ><tspan x="330" dy="0">CU3-04</tspan><tspan x="330" dy="14">Consultar cartera</tspan><tspan x="330" dy="14">pendiente</tspan></text>
-<ellipse cx="330" cy="520" rx="100" ry="36" fill="#fff3e0" stroke="#063b54" stroke-width="1.5"/>
-<text x="330" y="511" text-anchor="middle" font-size="12" font-weight="400" fill="#203a47" ><tspan x="330" dy="0">CU3-05</tspan><tspan x="330" dy="14">Anular pago</tspan><tspan x="330" dy="14">(solo ADMIN)</tspan></text>
-<line x1="88" y1="212" x2="232" y2="112" stroke="#063b54" stroke-width="1.2"  />
-<line x1="88" y1="212" x2="232" y2="212" stroke="#063b54" stroke-width="1.2"  />
-<line x1="88" y1="212" x2="232" y2="312" stroke="#063b54" stroke-width="1.2"  />
-<line x1="88" y1="212" x2="232" y2="412" stroke="#063b54" stroke-width="1.2"  />
-<line x1="88" y1="462" x2="236" y2="512" stroke="#063b54" stroke-width="1.2"  />
-<ellipse cx="640" cy="112" rx="112" ry="34" fill="#fff" stroke="#063b54" stroke-width="1.5"/>
-<text x="640" y="110" text-anchor="middle" font-size="12" font-weight="400" fill="#203a47" ><tspan x="640" dy="0">Validar valor, periodo,</tspan><tspan x="640" dy="14">método y duplicados</tspan></text>
-<ellipse cx="640" cy="212" rx="112" ry="30" fill="#fff" stroke="#063b54" stroke-width="1.5"/>
-<text x="640" y="210" text-anchor="middle" font-size="12" font-weight="400" fill="#203a47" ><tspan x="640" dy="0">Registrar auditoría</tspan><tspan x="640" dy="14">(tabla auditoria)</tspan></text>
-<ellipse cx="640" cy="312" rx="112" ry="30" fill="#fff" stroke="#063b54" stroke-width="1.5"/>
-<text x="640" y="310" text-anchor="middle" font-size="12" font-weight="400" fill="#203a47" ><tspan x="640" dy="0">Generar comprobante</tspan><tspan x="640" dy="14">interno CP-nnnnnn</tspan></text>
-<ellipse cx="640" cy="440" rx="112" ry="38" fill="#e8eef7" stroke="#063b54" stroke-width="1.5"/>
-<text x="640" y="438" text-anchor="middle" font-size="12" font-weight="400" fill="#203a47" ><tspan x="640" dy="0">Autenticar y verificar rol</tspan><tspan x="640" dy="14">(Iteraciones 1 y 2)</tspan></text>
-<ellipse cx="640" cy="548" rx="112" ry="30" fill="#fff" stroke="#063b54" stroke-width="1.5"/>
-<text x="640" y="546" text-anchor="middle" font-size="12" font-weight="400" fill="#203a47" ><tspan x="640" dy="0">Exigir motivo</tspan><tspan x="640" dy="14">de anulación</tspan></text>
-<line x1="430" y1="108" x2="528" y2="112" stroke="#063b54" stroke-width="1.2" stroke-dasharray="6 4" marker-end="url(#open)"/>
-<text x="479" y="98" text-anchor="middle" font-size="11" font-weight="400" fill="#078c97" font-style="italic"><tspan x="479" dy="0">«include»</tspan></text>
-<line x1="420" y1="130" x2="540" y2="196" stroke="#063b54" stroke-width="1.2" stroke-dasharray="6 4" marker-end="url(#open)"/>
-<text x="462" y="154" text-anchor="middle" font-size="11" font-weight="400" fill="#078c97" font-style="italic"><tspan x="462" dy="0">«include»</tspan></text>
-<line x1="428" y1="300" x2="530" y2="306" stroke="#063b54" stroke-width="1.2" stroke-dasharray="6 4" marker-end="url(#open)"/>
-<text x="479" y="292" text-anchor="middle" font-size="11" font-weight="400" fill="#078c97" font-style="italic"><tspan x="479" dy="0">«include»</tspan></text>
-<line x1="428" y1="216" x2="528" y2="212" stroke="#063b54" stroke-width="1.2" stroke-dasharray="6 4" marker-end="url(#open)"/>
-<text x="479" y="206" text-anchor="middle" font-size="11" font-weight="400" fill="#078c97" font-style="italic"><tspan x="479" dy="0">«include»</tspan></text>
-<line x1="428" y1="410" x2="540" y2="430" stroke="#063b54" stroke-width="1.2" stroke-dasharray="6 4" marker-end="url(#open)"/>
-<text x="478" y="410" text-anchor="middle" font-size="11" font-weight="400" fill="#078c97" font-style="italic"><tspan x="478" dy="0">«include»</tspan></text>
-<line x1="428" y1="500" x2="540" y2="462" stroke="#063b54" stroke-width="1.2" stroke-dasharray="6 4" marker-end="url(#open)"/>
-<text x="478" y="470" text-anchor="middle" font-size="11" font-weight="400" fill="#078c97" font-style="italic"><tspan x="478" dy="0">«include»</tspan></text>
-<line x1="428" y1="530" x2="530" y2="546" stroke="#063b54" stroke-width="1.2" stroke-dasharray="6 4" marker-end="url(#open)"/>
-<text x="478" y="528" text-anchor="middle" font-size="11" font-weight="400" fill="#078c97" font-style="italic"><tspan x="478" dy="0">«include»</tspan></text>
-<text x="485" y="600" text-anchor="middle" font-size="11" font-weight="400" fill="#8da2ae" font-style="italic"><tspan x="485" dy="0">Los pagos son informativos: no modifican la vigencia (autorizacion_hasta) ni bloquean entradas.</tspan></text>
+<rect width="880" height="610" fill="#fff"/>
+<text x="440" y="24" text-anchor="middle" font-size="16" font-weight="700" fill="#203a47" ><tspan x="440" dy="0">Diagrama de casos de uso · Gestión de pagos (Iteración 3)</tspan></text>
+<rect x="150" y="40" width="715" height="560" rx="10" fill="#fbfdfe" stroke="#8da2ae" stroke-width="1.5" stroke-dasharray="6 4"/>
+<text x="170" y="62" text-anchor="start" font-size="13" font-weight="700" fill="#078c97" ><tspan x="170" dy="0">Sistema Autos Colombia · Módulo de pagos</tspan></text>
+<g stroke="#063b54" stroke-width="2" fill="none"><circle cx="70" cy="70" r="11" fill="#fff"/><line x1="70" y1="81" x2="70" y2="112"/><line x1="52" y1="92" x2="88" y2="92"/><line x1="70" y1="112" x2="56" y2="134"/><line x1="70" y1="112" x2="84" y2="134"/></g>
+<text x="70" y="154" text-anchor="middle" font-size="13" font-weight="700" fill="#203a47" ><tspan x="70" dy="0">Administrador</tspan><tspan x="70" dy="15">(rol ADMIN)</tspan></text>
+<g stroke="#063b54" stroke-width="2" fill="none"><circle cx="70" cy="380" r="11" fill="#fff"/><line x1="70" y1="391" x2="70" y2="422"/><line x1="52" y1="402" x2="88" y2="402"/><line x1="70" y1="422" x2="56" y2="444"/><line x1="70" y1="422" x2="84" y2="444"/></g>
+<text x="70" y="464" text-anchor="middle" font-size="13" font-weight="700" fill="#203a47" ><tspan x="70" dy="0">Operador</tspan><tspan x="70" dy="15">(rol OPERADOR)</tspan></text>
+<line x1="70" y1="178" x2="70" y2="366" stroke="#063b54" stroke-width="1.5"  marker-end="url(#tri)"/>
+<text x="80" y="270" text-anchor="start" font-size="11.5" font-weight="400" fill="#078c97" font-style="italic"><tspan x="80" dy="0">«hereda»</tspan></text>
+<ellipse cx="330" cy="100" rx="128" ry="36" fill="#fff3e0" stroke="#063b54" stroke-width="1.5"/>
+<text x="330" y="97.5" text-anchor="middle" font-size="13" font-weight="400" fill="#203a47" ><tspan x="330" dy="0">CU3-05 Anular pago</tspan><tspan x="330" dy="15">(solo ADMIN)</tspan></text>
+<ellipse cx="330" cy="210" rx="128" ry="36" fill="#e3f6f7" stroke="#063b54" stroke-width="1.5"/>
+<text x="330" y="207.5" text-anchor="middle" font-size="13" font-weight="400" fill="#203a47" ><tspan x="330" dy="0">CU3-01 Registrar pago</tspan><tspan x="330" dy="15">de mensualidad</tspan></text>
+<ellipse cx="330" cy="320" rx="128" ry="36" fill="#e3f6f7" stroke="#063b54" stroke-width="1.5"/>
+<text x="330" y="317.5" text-anchor="middle" font-size="13" font-weight="400" fill="#203a47" ><tspan x="330" dy="0">CU3-02 Consultar</tspan><tspan x="330" dy="15">historial de pagos</tspan></text>
+<ellipse cx="330" cy="430" rx="128" ry="36" fill="#e3f6f7" stroke="#063b54" stroke-width="1.5"/>
+<text x="330" y="427.5" text-anchor="middle" font-size="13" font-weight="400" fill="#203a47" ><tspan x="330" dy="0">CU3-03 Consultar</tspan><tspan x="330" dy="15">comprobante</tspan></text>
+<ellipse cx="330" cy="540" rx="128" ry="36" fill="#e3f6f7" stroke="#063b54" stroke-width="1.5"/>
+<text x="330" y="537.5" text-anchor="middle" font-size="13" font-weight="400" fill="#203a47" ><tspan x="330" dy="0">CU3-04 Consultar</tspan><tspan x="330" dy="15">cartera pendiente</tspan></text>
+<line x1="88" y1="92" x2="202" y2="100" stroke="#063b54" stroke-width="1.3"  />
+<line x1="88" y1="402" x2="204" y2="210" stroke="#063b54" stroke-width="1.3"  />
+<line x1="88" y1="402" x2="204" y2="320" stroke="#063b54" stroke-width="1.3"  />
+<line x1="88" y1="402" x2="204" y2="430" stroke="#063b54" stroke-width="1.3"  />
+<line x1="88" y1="402" x2="204" y2="540" stroke="#063b54" stroke-width="1.3"  />
+<ellipse cx="715" cy="82" rx="120" ry="30" fill="#fff" stroke="#063b54" stroke-width="1.5"/>
+<text x="715" y="79.5" text-anchor="middle" font-size="12.5" font-weight="400" fill="#203a47" ><tspan x="715" dy="0">Validar motivo</tspan><tspan x="715" dy="15">de anulación</tspan></text>
+<ellipse cx="715" cy="160" rx="120" ry="30" fill="#fff" stroke="#063b54" stroke-width="1.5"/>
+<text x="715" y="157.5" text-anchor="middle" font-size="12.5" font-weight="400" fill="#203a47" ><tspan x="715" dy="0">Registrar auditoría</tspan><tspan x="715" dy="15">(tabla auditoria)</tspan></text>
+<ellipse cx="715" cy="240" rx="120" ry="30" fill="#fff" stroke="#063b54" stroke-width="1.5"/>
+<text x="715" y="245" text-anchor="middle" font-size="12.5" font-weight="400" fill="#203a47" ><tspan x="715" dy="0">Validar datos del pago</tspan></text>
+<line x1="452" y1="90" x2="596" y2="84" stroke="#063b54" stroke-width="1.3" stroke-dasharray="6 4" marker-end="url(#open)"/>
+<text x="524" y="76" text-anchor="middle" font-size="11.5" font-weight="400" fill="#078c97" font-style="italic"><tspan x="524" dy="0">«include»</tspan></text>
+<line x1="446" y1="114" x2="612" y2="154" stroke="#063b54" stroke-width="1.3" stroke-dasharray="6 4" marker-end="url(#open)"/>
+<text x="500" y="146" text-anchor="middle" font-size="11.5" font-weight="400" fill="#078c97" font-style="italic"><tspan x="500" dy="0">«include»</tspan></text>
+<line x1="440" y1="198" x2="606" y2="172" stroke="#063b54" stroke-width="1.3" stroke-dasharray="6 4" marker-end="url(#open)"/>
+<text x="540" y="200" text-anchor="middle" font-size="11.5" font-weight="400" fill="#078c97" font-style="italic"><tspan x="540" dy="0">«include»</tspan></text>
+<line x1="456" y1="214" x2="596" y2="238" stroke="#063b54" stroke-width="1.3" stroke-dasharray="6 4" marker-end="url(#open)"/>
+<text x="548" y="256" text-anchor="middle" font-size="11.5" font-weight="400" fill="#078c97" font-style="italic"><tspan x="548" dy="0">«include»</tspan></text>
+<line x1="330" y1="394" x2="330" y2="358" stroke="#063b54" stroke-width="1.3" stroke-dasharray="6 4" marker-end="url(#open)"/>
+<text x="342" y="380" text-anchor="start" font-size="11.5" font-weight="400" fill="#078c97" font-style="italic"><tspan x="342" dy="0">«extend»</tspan></text>
+<path d="M585 330 H836 L850 344 V480 H585 Z" fill="#fffbe6" stroke="#b8751a" stroke-width="1.3"/><path d="M836 330 V344 H850" fill="none" stroke="#b8751a" stroke-width="1.3"/>
+<text x="595" y="350" text-anchor="start" font-size="12" font-weight="400" fill="#203a47" ><tspan x="595" dy="0">Restricción transversal</tspan><tspan x="595" dy="15">(no es un caso de uso):</tspan><tspan x="595" dy="15">toda operación exige sesión activa</tspan><tspan x="595" dy="15">(cookie HttpOnly) y rol ADMIN u</tspan><tspan x="595" dy="15">OPERADOR; solo ADMIN anula.</tspan><tspan x="595" dy="15">Implementada por requiereSesion</tspan><tspan x="595" dy="15">y requiereRol en app.js.</tspan></text>
+<path d="M585 495 H836 L850 509 V585 H585 Z" fill="#fffbe6" stroke="#b8751a" stroke-width="1.3"/><path d="M836 495 V509 H850" fill="none" stroke="#b8751a" stroke-width="1.3"/>
+<text x="595" y="515" text-anchor="start" font-size="11.5" font-weight="400" fill="#203a47" ><tspan x="595" dy="0">«extend» CU3-03 → CU3-02: al elegir un</tspan><tspan x="595" dy="15">pago del historial; también se muestra</tspan><tspan x="595" dy="15">tras registrar. Los pagos no modifican la</tspan><tspan x="595" dy="15">vigencia del vehículo ni bloquean entradas.</tspan></text>
 </svg>
