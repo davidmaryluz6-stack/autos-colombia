@@ -1,4 +1,4 @@
-# Autos Colombia · Iteración 1
+# Autos Colombia · Iteraciones 1, 2 y 3
 
 Sistema académico para gestionar entrada y salida de vehículos de un parqueadero por mensualidad. **Vue 3 + Vite**, **Node.js + Express** y **MySQL 8**, compatible con el modelo físico del punto 5.
 
@@ -15,6 +15,7 @@ En MySQL Workbench, sobre una base `autos_colombia` **vacía**, ejecuta en orden
 1. `01_Modelo_Fisico_MySQL8_DDL.sql` (crea siete tablas).
 2. `02_Vista_y_Procedimientos.sql` (crea vista y procedimientos). **Fundamental** para que funcione la aplicación.
 3. `03_Datos_Ficticios_Demo.sql` (opcional, solo una vez, en una base vacía).
+4. `05_Migracion_Iteracion3_Pagos.sql` (Iteración 3: crea la tabla `pagos`; es idempotente y no modifica datos previos).
 
 Si ya tienes tablas y datos, **no vuelvas a ejecutar el script de datos ficticios**. Puedes ejecutar el archivo 02 para garantizar la presencia de los procedimientos (emplea `DROP PROCEDURE IF EXISTS`).
 
@@ -63,6 +64,7 @@ Abre http://127.0.0.1:5173 y usa las credenciales de prueba que configuraste en 
 - Consultar historial por placa, fecha y estado.
 - Registrar novedades asociadas a un movimiento activo con `sp_registrar_novedad`.
 - Ver detalle y trazabilidad; consultar auditoría como ADMIN.
+- **Iteración 3 · Pagos**: registrar pagos de mensualidad por vehículo y periodo (valor, método, referencia), impedir duplicados, consultar historial con filtros, ver comprobante interno, consultar cartera pendiente y anular pagos con motivo (solo ADMIN). Todo queda en auditoría. Parámetros opcionales en `backend/.env.example` (`PAGO_VALOR_MAXIMO`, `PAGO_VALOR_MENSUAL`, `PAGO_MESES_CARTERA`); el sistema no define tarifas ni mora.
 
 ## Estructura
 
@@ -81,3 +83,7 @@ Los datos mostrados dependen de la base real. Las contraseñas del `.env` son ex
 ## Alcance académico y seguridad
 
 No se procesan pagos ni se administran altas de clientes o celdas en esta iteración. El alta de vehículos es una ampliación controlada y conserva las validaciones de autorización y mensualidad antes de permitir una entrada. No es software validado para un parqueadero real: requiere pruebas de integración, HTTPS, registro centralizado y controles adicionales antes de usarse en producción.
+
+## Entrega académica EA3
+
+La documentación, diagramas, mockups, plan de pruebas y evidencias de la Iteración 3 están en `entrega/EA3_Gestion_Pagos/` (ver `INSTRUCCIONES_ENTREGA.md`).

@@ -1,0 +1,8 @@
+# PP-06 Cliente con pagos cambia de estado (cliente 3 "Cliente Tres (ficticio)", vehiculos 3 y 4; datos ficticios)
+Pagos del cliente 3 antes: 2 | ids 5,4
+PATCH desactivar cliente => HTTP 200 activo= 0
+Pagos del cliente 3 con cliente INACTIVO: 2 | ids 5,4 | mismo historial: true
+Placas en cartera con cliente inactivo: (ninguna) | FRT905/EXP111 excluidas: true
+POST pago a cliente inactivo => HTTP 409 El cliente del vehículo no está activo.
+Comprobante de un pago previo => HTTP 200 CP-000005
+PATCH reactivar cliente => HTTP 200 activo= 1

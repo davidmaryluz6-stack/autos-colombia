@@ -1,0 +1,11 @@
+-- Prueba de restricciones UNIQUE a nivel de base de datos (MySQL 8.0 en Docker, datos ficticios)
+-- 1) INSERT directo duplicando vehiculo+periodo activo (debe fallar):
+ERROR 1062 (23000) at line 1: Duplicate entry '1|2026-11-01' for key 'pagos.uq_pagos_periodo_activo'
+-- 2) INSERT directo con referencia repetida (debe fallar):
+ERROR 1062 (23000) at line 1: Duplicate entry 'TRANSFERENCIA|TR-9001' for key 'pagos.uq_pagos_referencia_activa'
+-- 3) valor <= 0 (debe fallar por CHECK):
+ERROR 3819 (HY000) at line 1: Check constraint 'ck_pagos_valor' is violated.
+-- 4) periodo que no es dia 1 (debe fallar por CHECK):
+ERROR 3819 (HY000) at line 1: Check constraint 'ck_pagos_periodo_dia1' is violated.
+-- 5) FK: vehiculo inexistente (debe fallar):
+ERROR 1452 (23000) at line 1: Cannot add or update a child row: a foreign key constraint fails (`autos_colombia`.`pagos`, CONSTRAINT `fk_pagos_vehiculo` FOREIGN KEY (`vehiculo_id`) REFERENCES `vehiculos` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT)

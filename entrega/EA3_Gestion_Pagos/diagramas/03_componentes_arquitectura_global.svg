@@ -1,0 +1,107 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 656" width="880" height="656" font-family="Arial, Helvetica, sans-serif">
+<defs>
+<marker id="open" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#063b54" stroke-width="1.5"/></marker>
+<marker id="solid" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto"><path d="M1 1 L9 5 L1 9 z" fill="#063b54"/></marker>
+<marker id="tri" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="12" markerHeight="12" orient="auto"><path d="M1 1 L11 6 L1 11 z" fill="#fff" stroke="#063b54" stroke-width="1.5"/></marker>
+<marker id="amb" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#b8751a" stroke-width="1.5"/></marker>
+</defs>
+<rect width="880" height="656" fill="#fff"/>
+<text x="440" y="22" text-anchor="middle" font-size="16" font-weight="700" fill="#203a47" ><tspan x="440" dy="0">Diagrama de componentes · Arquitectura global (Iteraciones 1, 2 y 3)</tspan></text>
+<rect x="14" y="34" width="852" height="142" rx="10" fill="#f8fbfd" stroke="#8da2ae" stroke-width="1.5" stroke-dasharray="6 4"/>
+<text x="26" y="52" text-anchor="start" font-size="13" font-weight="700" fill="#078c97" ><tspan x="26" dy="0">«navegador» Cliente web · Vue 3 + Vite  (frontend/src)</tspan></text>
+<rect x="40" y="56" width="470" height="106" rx="6" fill="#fff" stroke="#063b54" stroke-width="1.5" />
+<rect x="33" y="66" width="14" height="7" rx="1" fill="#fff" stroke="#063b54" stroke-width="1.2" />
+<rect x="33" y="77" width="14" height="7" rx="1" fill="#fff" stroke="#063b54" stroke-width="1.2" />
+<text x="60" y="80" text-anchor="start" font-size="12.5" font-weight="700" fill="#203a47" ><tspan x="60" dy="0">App.vue (componente único · pantallas y menú por rol)</tspan></text>
+<rect x="56" y="94" width="140" height="54" rx="6" fill="#e8eef7" stroke="#063b54" stroke-width="1.5" />
+<text x="126" y="119" text-anchor="middle" font-size="12.5" font-weight="400" fill="#203a47" ><tspan x="126" dy="0">Operación</tspan><tspan x="126" dy="14">vehicular (I1)</tspan></text>
+<rect x="206" y="94" width="140" height="54" rx="6" fill="#eaf6ee" stroke="#063b54" stroke-width="1.5" />
+<text x="276" y="119" text-anchor="middle" font-size="12.5" font-weight="400" fill="#203a47" ><tspan x="276" dy="0">Administración</tspan><tspan x="276" dy="14">(I2)</tspan></text>
+<rect x="356" y="94" width="142" height="54" rx="6" fill="#fff3e0" stroke="#b8751a" stroke-width="2" />
+<text x="427" y="119" text-anchor="middle" font-size="12.5" font-weight="700" fill="#203a47" ><tspan x="427" dy="0">Gestión de pagos</tspan><tspan x="427" dy="14">(I3 · nuevo)</tspan></text>
+<rect x="560" y="56" width="150" height="40" rx="6" fill="#fff" stroke="#063b54" stroke-width="1.5" />
+<rect x="553" y="64" width="14" height="7" rx="1" fill="#fff" stroke="#063b54" stroke-width="1.2" />
+<rect x="553" y="75" width="14" height="7" rx="1" fill="#fff" stroke="#063b54" stroke-width="1.2" />
+<text x="635" y="81" text-anchor="middle" font-size="12" font-weight="400" fill="#203a47" ><tspan x="635" dy="0">main.js · style.css</tspan></text>
+<rect x="560" y="110" width="150" height="48" rx="6" fill="#fff" stroke="#063b54" stroke-width="1.5" />
+<rect x="553" y="118" width="14" height="7" rx="1" fill="#fff" stroke="#063b54" stroke-width="1.2" />
+<rect x="553" y="129" width="14" height="7" rx="1" fill="#fff" stroke="#063b54" stroke-width="1.2" />
+<text x="635" y="132" text-anchor="middle" font-size="12.5" font-weight="400" fill="#203a47" ><tspan x="635" dy="0">api.js</tspan><tspan x="635" dy="14">fetch /api · errores</tspan></text>
+<line x1="510" y1="134" x2="560" y2="134" stroke="#063b54" stroke-width="1.5"  marker-end="url(#open)"/>
+<rect x="14" y="204" width="852" height="214" rx="10" fill="#f8fbfd" stroke="#8da2ae" stroke-width="1.5" stroke-dasharray="6 4"/>
+<text x="26" y="222" text-anchor="start" font-size="13" font-weight="700" fill="#078c97" ><tspan x="26" dy="0">«servidor» API REST · Node.js + Express  (backend/src)</tspan></text>
+<rect x="40" y="228" width="540" height="176" rx="6" fill="#fff" stroke="#063b54" stroke-width="1.5" />
+<rect x="33" y="238" width="14" height="7" rx="1" fill="#fff" stroke="#063b54" stroke-width="1.2" />
+<rect x="33" y="249" width="14" height="7" rx="1" fill="#fff" stroke="#063b54" stroke-width="1.2" />
+<text x="60" y="250" text-anchor="start" font-size="12.5" font-weight="700" fill="#203a47" ><tspan x="60" dy="0">app.js · crearApp() · helmet · control de origen · requiereSesion / requiereRol</tspan></text>
+<rect x="56" y="264" width="122" height="52" rx="6" fill="#e8eef7" stroke="#063b54" stroke-width="1.5" />
+<text x="117" y="288" text-anchor="middle" font-size="12" font-weight="400" fill="#203a47" ><tspan x="117" dy="0">/api/auth</tspan><tspan x="117" dy="14">(I1)</tspan></text>
+<rect x="186" y="264" width="122" height="52" rx="6" fill="#eaf6ee" stroke="#063b54" stroke-width="1.5" />
+<text x="247" y="288" text-anchor="middle" font-size="12" font-weight="400" fill="#203a47" ><tspan x="247" dy="0">/api/usuarios</tspan><tspan x="247" dy="14">(I2)</tspan></text>
+<rect x="316" y="264" width="122" height="52" rx="6" fill="#eaf6ee" stroke="#063b54" stroke-width="1.5" />
+<text x="377" y="288" text-anchor="middle" font-size="12" font-weight="400" fill="#203a47" ><tspan x="377" dy="0">/api/clientes</tspan><tspan x="377" dy="14">(I2)</tspan></text>
+<rect x="446" y="264" width="122" height="52" rx="6" fill="#e8eef7" stroke="#063b54" stroke-width="1.5" />
+<text x="507" y="288" text-anchor="middle" font-size="12" font-weight="400" fill="#203a47" ><tspan x="507" dy="0">/api/vehiculos</tspan><tspan x="507" dy="14">(I1)</tspan></text>
+<rect x="56" y="326" width="122" height="52" rx="6" fill="#eaf6ee" stroke="#063b54" stroke-width="1.5" />
+<text x="117" y="350" text-anchor="middle" font-size="12" font-weight="400" fill="#203a47" ><tspan x="117" dy="0">/api/celdas</tspan><tspan x="117" dy="14">(I1/I2)</tspan></text>
+<rect x="186" y="326" width="122" height="52" rx="6" fill="#e8eef7" stroke="#063b54" stroke-width="1.5" />
+<text x="247" y="350" text-anchor="middle" font-size="12" font-weight="400" fill="#203a47" ><tspan x="247" dy="0">/api/movimientos</tspan><tspan x="247" dy="14">/api/novedades (I1)</tspan></text>
+<rect x="316" y="326" width="122" height="52" rx="6" fill="#eaf6ee" stroke="#063b54" stroke-width="1.5" />
+<text x="377" y="350" text-anchor="middle" font-size="12" font-weight="400" fill="#203a47" ><tspan x="377" dy="0">/api/auditoria</tspan><tspan x="377" dy="14">(ADMIN)</tspan></text>
+<rect x="446" y="326" width="122" height="52" rx="6" fill="#fff3e0" stroke="#b8751a" stroke-width="2" />
+<text x="507" y="343.5" text-anchor="middle" font-size="11" font-weight="700" fill="#203a47" ><tspan x="507" dy="0">/api/pagos (I3)</tspan><tspan x="507" dy="13.5">/cartera /config /:id</tspan><tspan x="507" dy="13.5">/comprobante /anular</tspan></text>
+<text x="60" y="392" text-anchor="start" font-size="11.5" font-weight="400" fill="#8da2ae" font-style="italic"><tspan x="60" dy="0">server.js arranca la aplicación; create-demo-user.js crea la cuenta de prueba</tspan></text>
+<rect x="640" y="230" width="200" height="34" rx="6" fill="#fff" stroke="#063b54" stroke-width="1.5" />
+<rect x="633" y="238" width="14" height="7" rx="1" fill="#fff" stroke="#063b54" stroke-width="1.2" />
+<rect x="633" y="249" width="14" height="7" rx="1" fill="#fff" stroke="#063b54" stroke-width="1.2" />
+<text x="740" y="252" text-anchor="middle" font-size="12" font-weight="400" fill="#203a47" ><tspan x="740" dy="0">validation.js · reglas y UserError</tspan></text>
+<rect x="640" y="272" width="200" height="34" rx="6" fill="#fff" stroke="#063b54" stroke-width="1.5" />
+<rect x="633" y="280" width="14" height="7" rx="1" fill="#fff" stroke="#063b54" stroke-width="1.2" />
+<rect x="633" y="291" width="14" height="7" rx="1" fill="#fff" stroke="#063b54" stroke-width="1.2" />
+<text x="740" y="294" text-anchor="middle" font-size="12" font-weight="400" fill="#203a47" ><tspan x="740" dy="0">session.js · cookie firmada</tspan></text>
+<rect x="640" y="314" width="200" height="34" rx="6" fill="#fff" stroke="#063b54" stroke-width="1.5" />
+<rect x="633" y="322" width="14" height="7" rx="1" fill="#fff" stroke="#063b54" stroke-width="1.2" />
+<rect x="633" y="333" width="14" height="7" rx="1" fill="#fff" stroke="#063b54" stroke-width="1.2" />
+<text x="740" y="336" text-anchor="middle" font-size="12" font-weight="400" fill="#203a47" ><tspan x="740" dy="0">repository.js · SQL parametrizado</tspan></text>
+<rect x="640" y="362" width="200" height="34" rx="6" fill="#fff" stroke="#063b54" stroke-width="1.5" />
+<rect x="633" y="370" width="14" height="7" rx="1" fill="#fff" stroke="#063b54" stroke-width="1.2" />
+<rect x="633" y="381" width="14" height="7" rx="1" fill="#fff" stroke="#063b54" stroke-width="1.2" />
+<text x="740" y="384" text-anchor="middle" font-size="12" font-weight="400" fill="#203a47" ><tspan x="740" dy="0">db.js · pool mysql2 (.env)</tspan></text>
+<line x1="580" y1="247" x2="640" y2="247" stroke="#063b54" stroke-width="1.5"  marker-end="url(#open)"/>
+<line x1="580" y1="289" x2="640" y2="289" stroke="#063b54" stroke-width="1.5"  marker-end="url(#open)"/>
+<line x1="580" y1="331" x2="640" y2="331" stroke="#063b54" stroke-width="1.5"  marker-end="url(#open)"/>
+<line x1="740" y1="348" x2="740" y2="362" stroke="#063b54" stroke-width="1.5"  marker-end="url(#open)"/>
+<line x1="635" y1="158" x2="635" y2="204" stroke="#063b54" stroke-width="1.5"  marker-end="url(#solid)"/>
+<text x="645" y="192" text-anchor="start" font-size="11.5" font-weight="400" fill="#078c97" font-style="italic"><tspan x="645" dy="0">HTTP/JSON (/api) · cookie HttpOnly</tspan></text>
+<rect x="14" y="446" width="852" height="156" rx="10" fill="#f8fbfd" stroke="#8da2ae" stroke-width="1.5" stroke-dasharray="6 4"/>
+<text x="26" y="464" text-anchor="start" font-size="13" font-weight="700" fill="#078c97" ><tspan x="26" dy="0">«base de datos» MySQL 8  (database/01 … 05)</tspan></text>
+<line x1="740" y1="396" x2="740" y2="446" stroke="#063b54" stroke-width="1.5"  marker-end="url(#solid)"/>
+<text x="750" y="430" text-anchor="start" font-size="11.5" font-weight="400" fill="#078c97" font-style="italic"><tspan x="750" dy="0">SQL (mysql2)</tspan></text>
+<rect x="40" y="474" width="150" height="32" rx="6" fill="#e8eef7" stroke="#063b54" stroke-width="1.5" />
+<text x="115" y="495" text-anchor="middle" font-size="12.5" font-weight="400" fill="#203a47" ><tspan x="115" dy="0">usuarios</tspan></text>
+<rect x="240" y="474" width="150" height="32" rx="6" fill="#eaf6ee" stroke="#063b54" stroke-width="1.5" />
+<text x="315" y="495" text-anchor="middle" font-size="12.5" font-weight="400" fill="#203a47" ><tspan x="315" dy="0">clientes</tspan></text>
+<rect x="440" y="474" width="150" height="32" rx="6" fill="#e8eef7" stroke="#063b54" stroke-width="1.5" />
+<text x="515" y="495" text-anchor="middle" font-size="12.5" font-weight="400" fill="#203a47" ><tspan x="515" dy="0">vehiculos</tspan></text>
+<rect x="640" y="474" width="170" height="32" rx="6" fill="#e8eef7" stroke="#063b54" stroke-width="1.5" />
+<text x="725" y="495" text-anchor="middle" font-size="12.5" font-weight="400" fill="#203a47" ><tspan x="725" dy="0">celdas</tspan></text>
+<rect x="40" y="548" width="150" height="32" rx="6" fill="#eaf6ee" stroke="#063b54" stroke-width="1.5" />
+<text x="115" y="569" text-anchor="middle" font-size="12.5" font-weight="400" fill="#203a47" ><tspan x="115" dy="0">auditoria</tspan></text>
+<rect x="240" y="548" width="150" height="32" rx="6" fill="#e8eef7" stroke="#063b54" stroke-width="1.5" />
+<text x="315" y="569" text-anchor="middle" font-size="11.5" font-weight="400" fill="#203a47" ><tspan x="315" dy="0">movimientos · novedades</tspan></text>
+<rect x="440" y="548" width="150" height="32" rx="6" fill="#fff3e0" stroke="#b8751a" stroke-width="2" />
+<text x="515" y="569" text-anchor="middle" font-size="12.5" font-weight="700" fill="#203a47" ><tspan x="515" dy="0">pagos (05) · NUEVA</tspan></text>
+<rect x="640" y="548" width="220" height="38" rx="6" fill="#f3f7fa" stroke="#063b54" stroke-width="1.5" />
+<text x="750" y="565.5" text-anchor="middle" font-size="11" font-weight="400" fill="#203a47" ><tspan x="750" dy="0">v_celdas_ocupacion</tspan><tspan x="750" dy="13">sp_registrar_entrada/salida/novedad</tspan></text>
+<line x1="515" y1="548" x2="515" y2="506" stroke="#b8751a" stroke-width="1.6" stroke-dasharray="6 4" marker-end="url(#amb)"/>
+<line x1="460" y1="548" x2="360" y2="506" stroke="#b8751a" stroke-width="1.6" stroke-dasharray="6 4" marker-end="url(#amb)"/>
+<line x1="445" y1="556" x2="150" y2="506" stroke="#b8751a" stroke-width="1.6" stroke-dasharray="6 4" marker-end="url(#amb)"/>
+<text x="522" y="528" text-anchor="start" font-size="11" font-weight="700" fill="#b8751a" ><tspan x="522" dy="0">FK</tspan></text>
+<text x="24" y="624" text-anchor="start" font-size="11" font-weight="400" fill="#b8751a" font-style="italic"><tspan x="24" dy="0">pagos tiene FK a clientes, vehiculos y usuarios; no referencia celdas ni movimientos (relación indirecta por vehiculos). Cada pago/anulación escribe en auditoria.</tspan></text>
+<rect x="24" y="636" width="12" height="10" rx="6" fill="#e8eef7" stroke="#063b54" stroke-width="1.5" />
+<text x="42" y="645" text-anchor="start" font-size="11" font-weight="400" fill="#203a47" ><tspan x="42" dy="0">Iteración 1</tspan></text>
+<rect x="130" y="636" width="12" height="10" rx="6" fill="#eaf6ee" stroke="#063b54" stroke-width="1.5" />
+<text x="148" y="645" text-anchor="start" font-size="11" font-weight="400" fill="#203a47" ><tspan x="148" dy="0">Iteración 2</tspan></text>
+<rect x="236" y="636" width="12" height="10" rx="6" fill="#fff3e0" stroke="#b8751a" stroke-width="1.5" />
+<text x="254" y="645" text-anchor="start" font-size="11" font-weight="400" fill="#203a47" ><tspan x="254" dy="0">Iteración 3 (nuevo)</tspan></text>
+</svg>

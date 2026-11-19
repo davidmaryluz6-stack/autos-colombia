@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 498" width="880" height="498" font-family="Arial, Helvetica, sans-serif">
+<defs>
+<marker id="open" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#063b54" stroke-width="1.5"/></marker>
+<marker id="solid" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto"><path d="M1 1 L9 5 L1 9 z" fill="#063b54"/></marker>
+<marker id="tri" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="12" markerHeight="12" orient="auto"><path d="M1 1 L11 6 L1 11 z" fill="#fff" stroke="#063b54" stroke-width="1.5"/></marker>
+<marker id="amb" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#b8751a" stroke-width="1.5"/></marker>
+</defs>
+<rect width="880" height="498" fill="#fff"/>
+<text x="440" y="24" text-anchor="middle" font-size="16" font-weight="700" fill="#203a47" ><tspan x="440" dy="0">Diagrama de secuencia integrado · Iteraciones 1, 2 y 3 (parte 4 de 5)</tspan></text>
+<rect x="8" y="40" width="164" height="56" rx="6" fill="#063b54" stroke="#063b54" stroke-width="1.5" />
+<text x="90" y="66" text-anchor="middle" font-size="12.5" font-weight="400" fill="#fff" ><tspan x="90" dy="0">Usuario</tspan><tspan x="90" dy="14">(OPERADOR / ADMIN)</tspan></text>
+<line x1="90" y1="96" x2="90" y2="486" stroke="#8da2ae" stroke-width="1" stroke-dasharray="6 4" />
+<rect x="248" y="40" width="164" height="56" rx="6" fill="#063b54" stroke="#063b54" stroke-width="1.5" />
+<text x="330" y="66" text-anchor="middle" font-size="12.5" font-weight="400" fill="#fff" ><tspan x="330" dy="0">Frontend Vue 3</tspan><tspan x="330" dy="14">(App.vue · api.js)</tspan></text>
+<line x1="330" y1="96" x2="330" y2="486" stroke="#8da2ae" stroke-width="1" stroke-dasharray="6 4" />
+<rect x="508" y="40" width="164" height="56" rx="6" fill="#063b54" stroke="#063b54" stroke-width="1.5" />
+<text x="590" y="59" text-anchor="middle" font-size="12.5" font-weight="400" fill="#fff" ><tspan x="590" dy="0">API Express</tspan><tspan x="590" dy="14">(app.js · validation.js</tspan><tspan x="590" dy="14">repository.js)</tspan></text>
+<line x1="590" y1="96" x2="590" y2="486" stroke="#8da2ae" stroke-width="1" stroke-dasharray="6 4" />
+<rect x="698" y="40" width="164" height="56" rx="6" fill="#063b54" stroke="#063b54" stroke-width="1.5" />
+<text x="780" y="73" text-anchor="middle" font-size="12.5" font-weight="400" fill="#fff" ><tspan x="780" dy="0">MySQL 8</tspan></text>
+<line x1="780" y1="96" x2="780" y2="486" stroke="#8da2ae" stroke-width="1" stroke-dasharray="6 4" />
+<rect x="14" y="122" width="852" height="26" rx="4" fill="#fff3e0" stroke="none" stroke-width="1.5" />
+<text x="24" y="140" text-anchor="start" font-size="13" font-weight="700" fill="#063b54" ><tspan x="24" dy="0">ITERACIÓN 3 · Cartera pendiente</tspan></text>
+<line x1="90" y1="168" x2="330" y2="168" stroke="#063b54" stroke-width="1.5"  marker-end="url(#solid)"/>
+<text x="210" y="162" text-anchor="middle" font-size="12" font-weight="400" fill="#203a47" ><tspan x="210" dy="0">28. Abre «Cartera pendiente»</tspan></text>
+<line x1="330" y1="198" x2="590" y2="198" stroke="#063b54" stroke-width="1.5"  marker-end="url(#solid)"/>
+<text x="460" y="192" text-anchor="middle" font-size="12" font-weight="400" fill="#203a47" ><tspan x="460" dy="0">29. GET /api/pagos/cartera</tspan></text>
+<line x1="590" y1="242" x2="780" y2="242" stroke="#063b54" stroke-width="1.5"  marker-end="url(#solid)"/>
+<text x="685" y="222" text-anchor="middle" font-size="12" font-weight="400" fill="#203a47" ><tspan x="685" dy="0">30. SELECT vehículos autorizados</tspan><tspan x="685" dy="14">y pagos REGISTRADOS del periodo</tspan></text>
+<line x1="780" y1="272" x2="590" y2="272" stroke="#063b54" stroke-width="1.5" stroke-dasharray="6 4" marker-end="url(#open)"/>
+<text x="685" y="266" text-anchor="middle" font-size="12" font-weight="400" fill="#203a47" ><tspan x="685" dy="0">31. Filas</tspan></text>
+<line x1="590" y1="302" x2="330" y2="302" stroke="#063b54" stroke-width="1.5" stroke-dasharray="6 4" marker-end="url(#open)"/>
+<text x="460" y="296" text-anchor="middle" font-size="12" font-weight="400" fill="#203a47" ><tspan x="460" dy="0">32. 200 · pendientes por periodo</tspan></text>
+<rect x="14" y="322" width="852" height="26" rx="4" fill="#fff3e0" stroke="none" stroke-width="1.5" />
+<text x="24" y="340" text-anchor="start" font-size="13" font-weight="700" fill="#063b54" ><tspan x="24" dy="0">ITERACIÓN 3 · Comprobante</tspan></text>
+<line x1="330" y1="368" x2="590" y2="368" stroke="#063b54" stroke-width="1.5"  marker-end="url(#solid)"/>
+<text x="460" y="362" text-anchor="middle" font-size="12" font-weight="400" fill="#203a47" ><tspan x="460" dy="0">33. GET /api/pagos/{id}/comprobante</tspan></text>
+<line x1="590" y1="398" x2="780" y2="398" stroke="#063b54" stroke-width="1.5"  marker-end="url(#solid)"/>
+<text x="685" y="392" text-anchor="middle" font-size="12" font-weight="400" fill="#203a47" ><tspan x="685" dy="0">34. SELECT pago + cliente + vehículo</tspan></text>
+<line x1="780" y1="428" x2="590" y2="428" stroke="#063b54" stroke-width="1.5" stroke-dasharray="6 4" marker-end="url(#open)"/>
+<text x="685" y="422" text-anchor="middle" font-size="12" font-weight="400" fill="#203a47" ><tspan x="685" dy="0">35. Fila</tspan></text>
+<line x1="590" y1="458" x2="330" y2="458" stroke="#063b54" stroke-width="1.5" stroke-dasharray="6 4" marker-end="url(#open)"/>
+<text x="460" y="452" text-anchor="middle" font-size="12" font-weight="400" fill="#203a47" ><tspan x="460" dy="0">36. 200 · comprobante interno</tspan></text>
+</svg>

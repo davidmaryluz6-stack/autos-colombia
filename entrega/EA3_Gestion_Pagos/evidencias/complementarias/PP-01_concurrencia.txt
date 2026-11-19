@@ -1,0 +1,8 @@
+# PP-01 Concurrencia: 15 solicitudes simultaneas, mismo vehiculo (id 4, EXP111) y mismo periodo 2026-10, referencia distinta en cada una
+Codigos HTTP obtenidos: {"201":1,"409":14}
+Mensajes 409 distintos: [ 'Ya existe un pago registrado para ese vehículo y periodo.' ]
+
+# PP-01b Concurrencia: 15 solicitudes simultaneas con MISMA referencia (TARJETA, REF-UNICA-1), mismo vehiculo (id 3) y 15 periodos distintos ( 2025-01..2025-12 y 2026-01..03)
+Codigos HTTP obtenidos: {"201":1,"409":14}
+Filas REGISTRADAS en BD para vehiculo 4 / 2026-10 (SQL): 1
+Filas REGISTRADAS en BD con la referencia REF-UNICA-1 (SQL): 1

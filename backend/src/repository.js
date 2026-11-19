@@ -1,5 +1,5 @@
 import {pool} from './db.js';
-import {UserError, validarCambioCeldaOcupada} from './validation.js';
+import {UserError, validarCambioCeldaOcupada, periodosHasta, numeroComprobante} from './validation.js';
 
 export async function obtenerUsuario(usuario) {
   const [[row]] = await pool.execute(
@@ -694,4 +694,133 @@ export async function listarAuditoria({q = '', entidad = '', accion = '', desde 
     params
   );
   return rows;
+}
+
+// =============================================================================
+// ITERACIÓN 3 · GESTIÓN DE PAGOS
+// =============================================================================
+const SELECT_PAGO = `SELECT p.id, p.cliente_id, p.vehiculo_id, DATE_FORMAT(p.periodo,'%Y-%m-%d') AS periodo,
+  p.valor, p.metodo, p.referencia, p.observacion, p.estado, p.fecha_pago_utc,
+  p.motivo_anulacion, p.fecha_anulacion_utc,
+  c.nombre AS cliente, c.documento, v.placa, v.tipo AS tipo_vehiculo,
+  u.nombre AS registrado_por, ua.nombre AS anulado_por
+  FROM pagos p
+  JOIN clientes c ON c.id=p.cliente_id
+  JOIN vehiculos v ON v.id=p.vehiculo_id
+  JOIN usuarios u ON u.id=p.usuario_id
+  LEFT JOIN usuarios ua ON ua.id=p.usuario_anulacion_id`;
+
+export async function listarPagos({placa = '', clienteId = '', periodo = '', estado = '', limit = 200} = {}) {
+  const where = [];
+  const params = [];
+  if (placa) { where.push('v.placa LIKE ?'); params.push(`%${placa}%`); }
+  if (clienteId) { where.push('p.cliente_id = ?'); params.push(clienteId); }
+  if (periodo) { where.push('p.periodo = ?'); params.push(periodo); }
+  if (estado) { where.push('p.estado = ?'); params.push(estado); }
+  const [rows] = await pool.execute(
+    `${SELECT_PAGO} ${where.length ? 'WHERE ' + where.join(' AND ') : ''}
+     ORDER BY p.fecha_pago_utc DESC, p.id DESC LIMIT ${Number(limit) | 0}`,
+    params
+  );
+  return rows;
+}
+
+export async function detallePago(id) {
+  const [[row]] = await pool.execute(`${SELECT_PAGO} WHERE p.id=? LIMIT 1`, [id]);
+  return row || null;
+}
+
+export async function registrarPago({vehiculoId, periodo, valor, metodo, referencia, observacion, usuarioId}) {
+  const conn = await pool.getConnection();
+  try {
+    await conn.beginTransaction();
+    const [[veh]] = await conn.execute(
+      `SELECT v.id, v.placa, v.cliente_id, c.activo AS cliente_activo
+       FROM vehiculos v JOIN clientes c ON c.id=v.cliente_id WHERE v.id=? FOR UPDATE`,
+      [vehiculoId]
+    );
+    if (!veh) throw new UserError('El vehículo seleccionado no existe.', 404);
+    if (veh.cliente_activo !== 1) throw new UserError('El cliente del vehículo no está activo.', 409);
+    const [[dup]] = await conn.execute(
+      "SELECT id FROM pagos WHERE vehiculo_id=? AND periodo=? AND estado='REGISTRADO' LIMIT 1",
+      [vehiculoId, periodo]
+    );
+    if (dup) throw new UserError('Ya existe un pago registrado para ese vehículo y periodo.', 409);
+    if (referencia) {
+      const [[dupRef]] = await conn.execute(
+        "SELECT id FROM pagos WHERE metodo=? AND referencia=? AND estado='REGISTRADO' LIMIT 1",
+        [metodo, referencia]
+      );
+      if (dupRef) throw new UserError('La referencia ya fue utilizada en otro pago registrado.', 409);
+    }
+    const [r] = await conn.execute(
+      `INSERT INTO pagos (cliente_id,vehiculo_id,periodo,valor,metodo,referencia,observacion,usuario_id)
+       VALUES (?,?,?,?,?,?,?,?)`,
+      [veh.cliente_id, vehiculoId, periodo, valor, metodo, referencia, observacion, usuarioId]
+    );
+    await conn.execute(
+      `INSERT INTO auditoria (usuario_id,accion,entidad,registro_id,detalles)
+       VALUES (?,'REGISTRAR_PAGO','pagos',?,JSON_OBJECT('placa',?,'periodo',?,'valor',?,'metodo',?))`,
+      [usuarioId, r.insertId, veh.placa, periodo, valor, metodo]
+    );
+    await conn.commit();
+    return {id: r.insertId, comprobante: numeroComprobante(r.insertId), placa: veh.placa, periodo, valor, metodo, estado: 'REGISTRADO'};
+  } catch (error) {
+    await conn.rollback();
+    throw error;
+  } finally {
+    conn.release();
+  }
+}
+
+export async function anularPago(id, motivo, usuarioId) {
+  const conn = await pool.getConnection();
+  try {
+    await conn.beginTransaction();
+    const [[pago]] = await conn.execute('SELECT id,estado FROM pagos WHERE id=? FOR UPDATE', [id]);
+    if (!pago) throw new UserError('Pago no encontrado.', 404);
+    if (pago.estado === 'ANULADO') throw new UserError('El pago ya se encuentra anulado.', 409);
+    await conn.execute(
+      `UPDATE pagos SET estado='ANULADO', motivo_anulacion=?, fecha_anulacion_utc=UTC_TIMESTAMP(),
+       usuario_anulacion_id=? WHERE id=?`,
+      [motivo, usuarioId, id]
+    );
+    await conn.execute(
+      `INSERT INTO auditoria (usuario_id,accion,entidad,registro_id,detalles)
+       VALUES (?,'ANULAR_PAGO','pagos',?,JSON_OBJECT('motivo',?))`,
+      [usuarioId, id, motivo]
+    );
+    await conn.commit();
+  } catch (error) {
+    await conn.rollback();
+    throw error;
+  } finally {
+    conn.release();
+  }
+  return detallePago(id);
+}
+
+// Cartera: vehículos autorizados de clientes activos sin pago REGISTRADO en cada periodo evaluado.
+export async function consultarCartera({periodo, meses = 1, valorReferencia = null}) {
+  const periodos = periodosHasta(periodo, meses);
+  const [veh] = await pool.execute(
+    `SELECT v.id AS vehiculo_id, v.placa, v.tipo, c.id AS cliente_id, c.nombre AS cliente, c.documento, c.telefono
+     FROM vehiculos v JOIN clientes c ON c.id=v.cliente_id
+     WHERE v.autorizado=1 AND c.activo=1 ORDER BY c.nombre, v.placa`
+  );
+  const [pagados] = await pool.execute(
+    `SELECT vehiculo_id, DATE_FORMAT(periodo,'%Y-%m-%d') AS periodo FROM pagos
+     WHERE estado='REGISTRADO' AND periodo BETWEEN ? AND ?`,
+    [periodos[0], periodos[periodos.length - 1]]
+  );
+  const set = new Set(pagados.map(p => `${p.vehiculo_id}|${p.periodo}`));
+  const pendientes = [];
+  for (const v of veh) {
+    for (const per of periodos) {
+      if (!set.has(`${v.vehiculo_id}|${per}`)) {
+        pendientes.push({...v, periodo: per, valor_estimado: valorReferencia});
+      }
+    }
+  }
+  return pendientes;
 }

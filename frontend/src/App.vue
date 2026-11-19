@@ -205,6 +205,11 @@ async function cargarPagina(id) {
     if (id === 'celdas') {
       vistaCeldas.value = 'mapa';
     }
+    if (id === 'pagos') {
+      vistaPagos.value = 'registrar';
+      comprobante.value = null;
+      await prepararPagos();
+    }
     if (id === 'historial') await buscarHistorial();
     if (id === 'novedades') novedades.value = await api('/novedades');
     if (id === 'auditoria' && esAdmin.value) await buscarAuditoria();
@@ -563,6 +568,87 @@ async function cambiarHabilitacionRapidaCelda(c) {
   });
 }
 
+
+// Iteración 3 · Gestión de pagos
+const vistaPagos = ref('registrar'); // 'registrar' | 'historial' | 'cartera' | 'comprobante'
+const configPagos = ref({valorMaximo: 0, valorMensualReferencia: null, periodoActual: ''});
+const vehiculosPago = ref([]);
+const pagos = ref([]);
+const cartera = ref({periodo: '', mesesEvaluados: 1, total: 0, pendientes: []});
+const filtroPagos = ref({placa: '', periodo: '', estado: ''});
+const nuevoPago = ref({vehiculoId: '', periodo: '', valor: '', metodo: 'EFECTIVO', referencia: '', observacion: ''});
+const comprobante = ref(null);
+const anulando = ref(null);
+const motivoAnulacion = ref('');
+const metodosPago = ['EFECTIVO', 'TRANSFERENCIA', 'TARJETA', 'OTRO'];
+
+const dinero = v =>
+  v === null || v === undefined || v === ''
+    ? '—'
+    : new Intl.NumberFormat('es-CO', {style: 'currency', currency: 'COP', maximumFractionDigits: 0}).format(Number(v));
+const mesLegible = p => (p ? String(p).slice(0, 7) : '—');
+const imprimir = () => window.print();
+
+async function cargarPagos() {
+  const params = new URLSearchParams(
+    Object.fromEntries(Object.entries(filtroPagos.value).filter(([_, v]) => v !== ''))
+  );
+  pagos.value = await api('/pagos' + (params.size ? '?' + params.toString() : ''));
+}
+
+async function cargarCartera() {
+  cartera.value = await api('/pagos/cartera');
+}
+
+async function prepararPagos() {
+  configPagos.value = await api('/pagos/config');
+  vehiculosPago.value = await api('/vehiculos');
+  nuevoPago.value = {
+    vehiculoId: '',
+    periodo: configPagos.value.periodoActual.slice(0, 7),
+    valor: configPagos.value.valorMensualReferencia ?? '',
+    metodo: 'EFECTIVO',
+    referencia: '',
+    observacion: '',
+  };
+}
+
+async function cambiarVistaPagos(v) {
+  vistaPagos.value = v;
+  comprobante.value = null;
+  await trabajo(async () => {
+    if (v === 'historial') await cargarPagos();
+    if (v === 'cartera') await cargarCartera();
+  });
+}
+
+async function verComprobante(id) {
+  comprobante.value = await api(`/pagos/${id}/comprobante`);
+  vistaPagos.value = 'comprobante';
+}
+
+async function registrarPago() {
+  await trabajo(async () => {
+    const data = await api('/pagos', {method: 'POST', body: nuevoPago.value});
+    await verComprobante(data.pago.id);
+    await prepararPagos();
+    alertar(`${data.mensaje} Comprobante ${data.pago.comprobante}.`);
+  });
+}
+
+async function confirmarAnulacion() {
+  await trabajo(async () => {
+    const data = await api(`/pagos/${anulando.value.id}/anular`, {
+      method: 'POST',
+      body: {motivo: motivoAnulacion.value},
+    });
+    anulando.value = null;
+    motivoAnulacion.value = '';
+    await cargarPagos();
+    alertar(data.mensaje);
+  });
+}
+
 function formatearDetallesAuditoria(detalles) {
   if (!detalles) return '—';
   try {
@@ -589,6 +675,7 @@ const titulosPagina = {
   clientes: 'Clientes mensualistas',
   celdas: 'Celdas y disponibilidad',
   auditoria: 'Auditoría administrativa',
+  pagos: 'Gestión de pagos',
 };
 
 const subtitulosPagina = {
@@ -603,6 +690,7 @@ const subtitulosPagina = {
   clientes: 'Consulta y administración de titulares del servicio mensual de estacionamiento.',
   celdas: 'Consulta de espacios, mapa de ocupación real y configuración de celdas.',
   auditoria: 'Trazabilidad de las operaciones sobre usuarios, clientes, celdas y movimientos.',
+  pagos: 'Registro de mensualidades, historial, comprobantes y cartera pendiente.',
 };
 
 const titulo = computed(() => titulosPagina[pagina.value] || 'Panel principal');
@@ -721,6 +809,13 @@ onMounted(async () => {
         </button>
       </nav>
 
+      <span class="side-title side-section">PAGOS · I3</span>
+      <nav aria-label="Menú de pagos">
+        <button :class="['nav-item', {selected: pagina === 'pagos'}]" @click="cargarPagina('pagos')">
+          <span>$</span>Gestión de pagos
+        </button>
+      </nav>
+
       <div class="side-bottom">
         <div class="badge-lite">Sistema activo · Rol {{ sesion.rol }}</div>
         <button class="nav-item" @click="salirSesion"><span>⇥</span> Cerrar sesión</button>
@@ -736,7 +831,7 @@ onMounted(async () => {
 
     <main class="workspace">
       <header class="topbar">
-        <span>Autos Colombia / Iteraciones 1 y 2</span>
+        <span>Autos Colombia / Iteraciones 1, 2 y 3</span>
         <div>
           <span class="top-pill">{{ esAdmin ? 'Modo Administrador' : 'Modo Operador' }}</span>
           <span class="avatar tiny">{{ sesion.nombre.charAt(0).toUpperCase() }}</span>
@@ -748,9 +843,11 @@ onMounted(async () => {
           <div>
             <p class="eyebrow teal">
               {{
-                ['cuentas', 'clientes', 'celdas', 'auditoria'].includes(pagina)
-                  ? 'GESTIÓN ADMINISTRATIVA · ITERACIÓN 2'
-                  : 'CONTROL DE ACCESO VEHICULAR'
+                pagina === 'pagos'
+                  ? 'GESTIÓN DE PAGOS · ITERACIÓN 3'
+                  : ['cuentas', 'clientes', 'celdas', 'auditoria'].includes(pagina)
+                    ? 'GESTIÓN ADMINISTRATIVA · ITERACIÓN 2'
+                    : 'CONTROL DE ACCESO VEHICULAR'
               }}
             </p>
             <h1>{{ titulo }}</h1>
@@ -1249,6 +1346,178 @@ onMounted(async () => {
         <!-- ================================================================== -->
         <!-- MÓDULO 2 (I2): GESTIÓN DE CLIENTES MENSUALISTAS (D06, D07, D08)    -->
         <!-- ================================================================== -->
+        <template v-else-if="pagina === 'pagos'">
+          <div class="pill-bar" style="margin-bottom: 18px">
+            <button :class="['pill-filter', {active: vistaPagos === 'registrar'}]" @click="cambiarVistaPagos('registrar')">Registrar pago</button>
+            <button :class="['pill-filter', {active: vistaPagos === 'historial'}]" @click="cambiarVistaPagos('historial')">Historial de pagos</button>
+            <button :class="['pill-filter', {active: vistaPagos === 'cartera'}]" @click="cambiarVistaPagos('cartera')">Cartera pendiente</button>
+          </div>
+
+          <!-- RF3-P01: registrar pago -->
+          <div v-if="vistaPagos === 'registrar'" class="split wide">
+            <section class="card">
+              <h3>Registrar pago de mensualidad</h3>
+              <form class="form-grid" @submit.prevent="registrarPago">
+                <label>
+                  Vehículo (placa · cliente)
+                  <select v-model="nuevoPago.vehiculoId" required>
+                    <option value="" disabled>Selecciona un vehículo…</option>
+                    <option v-for="v in vehiculosPago" :key="v.id" :value="v.id">{{ v.placa }} · {{ v.cliente }}</option>
+                  </select>
+                </label>
+                <div class="two-cols">
+                  <label>
+                    Periodo pagado
+                    <input v-model="nuevoPago.periodo" type="month" required />
+                  </label>
+                  <label>
+                    Valor (COP)
+                    <input v-model="nuevoPago.valor" type="number" min="1" step="0.01" required placeholder="Ej. 150000" />
+                  </label>
+                </div>
+                <div class="two-cols">
+                  <label>
+                    Método de pago
+                    <select v-model="nuevoPago.metodo">
+                      <option v-for="m in metodosPago" :key="m" :value="m">{{ m }}</option>
+                    </select>
+                  </label>
+                  <label>
+                    Referencia {{ nuevoPago.metodo === 'EFECTIVO' ? '(opcional)' : '(obligatoria)' }}
+                    <input v-model.trim="nuevoPago.referencia" maxlength="60" :required="nuevoPago.metodo !== 'EFECTIVO'" />
+                  </label>
+                </div>
+                <label>
+                  Observación (opcional)
+                  <input v-model.trim="nuevoPago.observacion" maxlength="255" />
+                </label>
+                <div class="button-row">
+                  <button class="btn primary" :disabled="trabajando">Registrar pago</button>
+                </div>
+              </form>
+            </section>
+            <section class="card narrow">
+              <h3>Reglas aplicadas</h3>
+              <p>✓ Un solo pago activo por vehículo y periodo</p>
+              <p>✓ Referencia no repetible por método</p>
+              <p>✓ Solo clientes activos</p>
+              <p>✓ Se genera comprobante y auditoría</p>
+              <div class="info-inline warn">
+                El valor lo digita el operador: el sistema no define tarifas.
+                {{ configPagos.valorMensualReferencia ? 'Valor de referencia configurado: ' + dinero(configPagos.valorMensualReferencia) : '' }}
+              </div>
+            </section>
+          </div>
+
+          <!-- RF3-P06: comprobante -->
+          <section v-else-if="vistaPagos === 'comprobante' && comprobante" class="card">
+            <div class="card-head">
+              <div>
+                <h3>Comprobante {{ comprobante.numero }}</h3>
+                <p class="muted">{{ comprobante.documentoInformativo }}</p>
+              </div>
+              <span :class="['status', comprobante.estado === 'ANULADO' ? 'inactive' : '']">{{ comprobante.estado }}</span>
+            </div>
+            <div class="detail-grid">
+              <div><small>CLIENTE</small><strong>{{ comprobante.cliente }} ({{ comprobante.documento }})</strong></div>
+              <div><small>PLACA</small><strong>{{ comprobante.placa }}</strong></div>
+              <div><small>PERIODO</small><strong>{{ comprobante.periodo }}</strong></div>
+              <div><small>VALOR</small><strong>{{ dinero(comprobante.valor) }}</strong></div>
+              <div><small>MÉTODO</small><strong>{{ comprobante.metodo }}</strong></div>
+              <div><small>REFERENCIA</small><strong>{{ comprobante.referencia || '—' }}</strong></div>
+              <div><small>FECHA DE PAGO</small><strong>{{ fecha(comprobante.fechaPagoUtc) }}</strong></div>
+              <div><small>REGISTRADO POR</small><strong>{{ comprobante.registradoPor }}</strong></div>
+              <div v-if="comprobante.motivoAnulacion"><small>MOTIVO DE ANULACIÓN</small><strong>{{ comprobante.motivoAnulacion }}</strong></div>
+            </div>
+            <div class="button-row">
+              <button class="btn primary" @click="imprimir">Imprimir</button>
+              <button class="btn secondary" @click="cambiarVistaPagos('historial')">Ir al historial</button>
+            </div>
+          </section>
+
+          <!-- RF3-P04: historial -->
+          <section v-else-if="vistaPagos === 'historial'" class="card">
+            <form class="filter-grid cols-4" @submit.prevent="trabajo(cargarPagos)">
+              <label>Placa<input v-model.trim="filtroPagos.placa" placeholder="Buscar por placa…" /></label>
+              <label>Periodo<input v-model="filtroPagos.periodo" type="month" /></label>
+              <label>
+                Estado
+                <select v-model="filtroPagos.estado">
+                  <option value="">Todos</option>
+                  <option value="REGISTRADO">Registrado</option>
+                  <option value="ANULADO">Anulado</option>
+                </select>
+              </label>
+              <div class="button-row">
+                <button class="btn primary" type="submit">Buscar</button>
+                <button class="btn secondary" type="button" @click="filtroPagos = {placa: '', periodo: '', estado: ''}; trabajo(cargarPagos)">Limpiar</button>
+              </div>
+            </form>
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr><th>COMPROBANTE</th><th>PLACA</th><th>CLIENTE</th><th>PERIODO</th><th>VALOR</th><th>MÉTODO</th><th>ESTADO</th><th>ACCIÓN</th></tr>
+                </thead>
+                <tbody>
+                  <tr v-for="p in pagos" :key="p.id">
+                    <td><strong>CP-{{ String(p.id).padStart(6, '0') }}</strong></td>
+                    <td>{{ p.placa }}</td>
+                    <td>{{ p.cliente }}</td>
+                    <td>{{ mesLegible(p.periodo) }}</td>
+                    <td>{{ dinero(p.valor) }}</td>
+                    <td>{{ p.metodo }}</td>
+                    <td><span :class="['status', p.estado === 'ANULADO' ? 'inactive' : '']">{{ p.estado }}</span></td>
+                    <td>
+                      <button class="linkish" @click="trabajo(() => verComprobante(p.id))">Comprobante</button>
+                      <template v-if="esAdmin && p.estado === 'REGISTRADO'">
+                        · <button class="linkish" @click="anulando = p; motivoAnulacion = ''">Anular</button>
+                      </template>
+                    </td>
+                  </tr>
+                  <tr v-if="!pagos.length"><td colspan="8" class="empty">No hay pagos con estos criterios.</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <div v-if="anulando" class="info-inline warn">
+              <strong>Anular CP-{{ String(anulando.id).padStart(6, '0') }} ({{ anulando.placa }}, {{ mesLegible(anulando.periodo) }})</strong>
+              <label>Motivo (mínimo 5 caracteres)<input v-model.trim="motivoAnulacion" maxlength="255" /></label>
+              <div class="button-row" style="margin-top: 10px">
+                <button class="btn warn-btn" :disabled="trabajando" @click="confirmarAnulacion">Confirmar anulación</button>
+                <button class="btn secondary" @click="anulando = null">Cancelar</button>
+              </div>
+            </div>
+            <div v-if="!esAdmin" class="info-inline" style="margin-top: 16px">Solo ADMIN puede anular pagos.</div>
+          </section>
+
+          <!-- RF3-P07: cartera -->
+          <section v-else-if="vistaPagos === 'cartera'" class="card">
+            <div class="card-head">
+              <div>
+                <h3>Cartera pendiente · periodo {{ mesLegible(cartera.periodo) }}</h3>
+                <p class="muted">
+                  Vehículos autorizados de clientes activos sin pago registrado. Meses evaluados: {{ cartera.mesesEvaluados }}.
+                  Total pendientes: {{ cartera.total }}.
+                </p>
+              </div>
+            </div>
+            <div class="table-wrap">
+              <table>
+                <thead><tr><th>PLACA</th><th>CLIENTE</th><th>DOCUMENTO</th><th>CONTACTO</th><th>PERIODO PENDIENTE</th></tr></thead>
+                <tbody>
+                  <tr v-for="x in cartera.pendientes" :key="x.vehiculo_id + x.periodo">
+                    <td><strong>{{ x.placa }}</strong></td>
+                    <td>{{ x.cliente }}</td>
+                    <td>{{ x.documento }}</td>
+                    <td>{{ x.telefono || '—' }}</td>
+                    <td>{{ mesLegible(x.periodo) }}</td>
+                  </tr>
+                  <tr v-if="!cartera.pendientes.length"><td colspan="5" class="empty">No hay cartera pendiente.</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+        </template>
+
         <template v-else-if="pagina === 'clientes'">
           <!-- D06: Listado de clientes -->
           <section v-if="vistaClientes === 'listado'" class="card">
@@ -2067,7 +2336,7 @@ onMounted(async () => {
               <p>✓ Registrar fecha y operador</p>
               <p>✓ Liberar celda automáticamente</p>
               <p>✓ Actualizar historial</p>
-              <div class="info-inline warn">No se procesan pagos en esta iteración.</div>
+              <div class="info-inline warn">Los pagos de mensualidad se registran en el módulo «Gestión de pagos».</div>
             </section>
           </div>
         </template>
@@ -2269,7 +2538,7 @@ onMounted(async () => {
       </div>
 
       <footer class="footer">
-        Autos Colombia · Iteraciones 1 y 2
+        Autos Colombia · Iteraciones 1, 2 y 3
         <span>Sistema integrado · Persistencia MySQL 8</span>
       </footer>
     </main>

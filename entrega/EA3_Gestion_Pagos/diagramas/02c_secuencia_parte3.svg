@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 516" width="880" height="516" font-family="Arial, Helvetica, sans-serif">
+<defs>
+<marker id="open" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#063b54" stroke-width="1.5"/></marker>
+<marker id="solid" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto"><path d="M1 1 L9 5 L1 9 z" fill="#063b54"/></marker>
+<marker id="tri" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="12" markerHeight="12" orient="auto"><path d="M1 1 L11 6 L1 11 z" fill="#fff" stroke="#063b54" stroke-width="1.5"/></marker>
+<marker id="amb" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#b8751a" stroke-width="1.5"/></marker>
+</defs>
+<rect width="880" height="516" fill="#fff"/>
+<text x="440" y="24" text-anchor="middle" font-size="16" font-weight="700" fill="#203a47" ><tspan x="440" dy="0">Diagrama de secuencia integrado · Iteraciones 1, 2 y 3 (parte 3 de 5)</tspan></text>
+<rect x="8" y="40" width="164" height="56" rx="6" fill="#063b54" stroke="#063b54" stroke-width="1.5" />
+<text x="90" y="66" text-anchor="middle" font-size="12.5" font-weight="400" fill="#fff" ><tspan x="90" dy="0">Usuario</tspan><tspan x="90" dy="14">(OPERADOR / ADMIN)</tspan></text>
+<line x1="90" y1="96" x2="90" y2="504" stroke="#8da2ae" stroke-width="1" stroke-dasharray="6 4" />
+<rect x="248" y="40" width="164" height="56" rx="6" fill="#063b54" stroke="#063b54" stroke-width="1.5" />
+<text x="330" y="66" text-anchor="middle" font-size="12.5" font-weight="400" fill="#fff" ><tspan x="330" dy="0">Frontend Vue 3</tspan><tspan x="330" dy="14">(App.vue · api.js)</tspan></text>
+<line x1="330" y1="96" x2="330" y2="504" stroke="#8da2ae" stroke-width="1" stroke-dasharray="6 4" />
+<rect x="508" y="40" width="164" height="56" rx="6" fill="#063b54" stroke="#063b54" stroke-width="1.5" />
+<text x="590" y="59" text-anchor="middle" font-size="12.5" font-weight="400" fill="#fff" ><tspan x="590" dy="0">API Express</tspan><tspan x="590" dy="14">(app.js · validation.js</tspan><tspan x="590" dy="14">repository.js)</tspan></text>
+<line x1="590" y1="96" x2="590" y2="504" stroke="#8da2ae" stroke-width="1" stroke-dasharray="6 4" />
+<rect x="698" y="40" width="164" height="56" rx="6" fill="#063b54" stroke="#063b54" stroke-width="1.5" />
+<text x="780" y="73" text-anchor="middle" font-size="12.5" font-weight="400" fill="#fff" ><tspan x="780" dy="0">MySQL 8</tspan></text>
+<line x1="780" y1="96" x2="780" y2="504" stroke="#8da2ae" stroke-width="1" stroke-dasharray="6 4" />
+<rect x="14" y="122" width="852" height="26" rx="4" fill="#fff3e0" stroke="none" stroke-width="1.5" />
+<text x="24" y="140" text-anchor="start" font-size="13" font-weight="700" fill="#063b54" ><tspan x="24" dy="0">ITERACIÓN 3 · Registrar un pago</tspan></text>
+<line x1="90" y1="168" x2="330" y2="168" stroke="#063b54" stroke-width="1.5"  marker-end="url(#solid)"/>
+<text x="210" y="162" text-anchor="middle" font-size="12" font-weight="400" fill="#203a47" ><tspan x="210" dy="0">21. Completa el formulario y confirma</tspan></text>
+<line x1="330" y1="198" x2="590" y2="198" stroke="#063b54" stroke-width="1.5"  marker-end="url(#solid)"/>
+<text x="460" y="192" text-anchor="middle" font-size="12" font-weight="400" fill="#203a47" ><tspan x="460" dy="0">22. POST /api/pagos</tspan></text>
+<path d="M590 222 h34 v19 h-34" fill="none" stroke="#063b54" stroke-width="1.4" marker-end="url(#open)"/>
+<text x="632" y="228" text-anchor="start" font-size="12" font-weight="400" fill="#203a47" ><tspan x="632" dy="0">23. requiereSesion · requiereRol</tspan><tspan x="632" dy="14">(ADMIN|OPERADOR) · validarPago()</tspan></text>
+<text x="370" y="276" text-anchor="start" font-size="12" font-weight="700" fill="#b8751a" ><tspan x="370" dy="0">alt  [datos válidos]</tspan></text>
+<line x1="590" y1="328" x2="780" y2="328" stroke="#063b54" stroke-width="1.5"  marker-end="url(#solid)"/>
+<text x="685" y="294" text-anchor="middle" font-size="12" font-weight="400" fill="#203a47" ><tspan x="685" dy="0">24. BEGIN · SELECT vehículo FOR UPDATE</tspan><tspan x="685" dy="14">verificar duplicados · INSERT pagos</tspan><tspan x="685" dy="14">INSERT auditoria · COMMIT</tspan></text>
+<line x1="780" y1="358" x2="590" y2="358" stroke="#063b54" stroke-width="1.5" stroke-dasharray="6 4" marker-end="url(#open)"/>
+<text x="685" y="352" text-anchor="middle" font-size="12" font-weight="400" fill="#203a47" ><tspan x="685" dy="0">25. id del pago</tspan></text>
+<line x1="590" y1="388" x2="330" y2="388" stroke="#063b54" stroke-width="1.5" stroke-dasharray="6 4" marker-end="url(#open)"/>
+<text x="460" y="382" text-anchor="middle" font-size="12" font-weight="400" fill="#203a47" ><tspan x="460" dy="0">26. 201 · comprobante CP-nnnnnn</tspan></text>
+<line x1="350" y1="408" x2="870" y2="408" stroke="#b8751a" stroke-width="1.2" stroke-dasharray="6 4" />
+<text x="370" y="425" text-anchor="start" font-size="12" font-weight="700" fill="#b8751a" ><tspan x="370" dy="0">[dato inválido o duplicado]</tspan></text>
+<line x1="590" y1="468" x2="330" y2="468" stroke="#063b54" stroke-width="1.5" stroke-dasharray="6 4" marker-end="url(#open)"/>
+<text x="460" y="448" text-anchor="middle" font-size="12" font-weight="400" fill="#203a47" ><tspan x="460" dy="0">27. 400 / 409 · mensaje</tspan><tspan x="460" dy="14">(ROLLBACK si hubo BD)</tspan></text>
+<rect x="350" y="260" width="520" height="228" rx="4" fill="none" stroke="#b8751a" stroke-width="1.2" stroke-dasharray="6 4"/>
+</svg>

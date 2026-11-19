@@ -1,0 +1,16 @@
+# PP-04 Impresion del comprobante (ANTES) · emulacion de medio "print" en Edge, tamano carta
+PDF generado: PP-04_comprobante_impresion_ANTES.pdf
+
+# PP-05a Navegacion solo con teclado (ANTES) · Edge 1440x900
+Tab hasta alcanzar el primer campo (select vehiculo): 5 pulsaciones. Recorrido: button[submit] "⇥ Cerrar sesión" > button[submit] "Registrar pago" > button[submit] "Historial de pagos" > button[submit] "Cartera pendiente" > select[select-one] "Selecciona un vehículo…ABC12"
+Orden de foco tras el vehiculo: input[month] "2026-11" > input[month] "2026-11" > input[number] "" > select[select-one] "EFECTIVOTRANSFERENCIATARJETA" > input[text] "" > input[text] "" > button[submit] "Registrar pago"
+Estado del formulario tras llenar con teclado: {"vehiculo":"EXP111 · Cliente Tres (ficticio)","valor":"130000","periodo":"2026-11","metodo":"EFECTIVO"}
+Foco actual antes de Enter: button[submit] "Registrar pago"
+Aviso mostrado: ✓ Pago registrado correctamente. Comprobante CP-000007. ×
+Vista mostrada: Comprobante CP-000007
+Indicador de foco (outline) en elementos del menu al recibir foco por teclado: auto 3px
+
+# PP-05b Adaptacion movil (ANTES) · viewport 390x844, isMobile, DPR 2
+Panel inicial: scrollWidth=390 clientWidth=390 desborde horizontal=false | sidebar 65x844 pos=sticky
+Gestion de pagos / registrar: scrollWidth=390 clientWidth=390 desborde horizontal=false | sidebar 65x844 pos=sticky
+Gestion de pagos / historial: scrollWidth=390 clientWidth=390 desborde horizontal=false | sidebar 65x844 pos=sticky
