@@ -1,0 +1,825 @@
+{
+  "_type": "Project",
+  "_id": "EA3c53b4cd2b91e2ae5f38b",
+  "name": "EA3 - Casos de uso de pagos",
+  "ownedElements": [
+    {
+      "_type": "UMLModel",
+      "_id": "EA3633ed6283baa044595ea",
+      "_parent": {
+        "$ref": "EA3c53b4cd2b91e2ae5f38b"
+      },
+      "name": "Autos Colombia - Iteraciones 1, 2 y 3",
+      "ownedElements": [
+        {
+          "_type": "UMLUseCaseDiagram",
+          "_id": "EA3cd738405ea3f1836665c",
+          "_parent": {
+            "$ref": "EA3633ed6283baa044595ea"
+          },
+          "name": "I3 - Casos de uso - Gestión de pagos",
+          "defaultDiagram": true,
+          "visible": true,
+          "ownedViews": [
+            {
+              "_type": "UMLUseCaseSubjectView",
+              "_id": "EA3ef285253a4200e306316",
+              "_parent": {
+                "$ref": "EA3cd738405ea3f1836665c"
+              },
+              "visible": true,
+              "enabled": true,
+              "font": "Arial;13;0",
+              "model": {
+                "$ref": "EA38be9b47f4b285daf49e3"
+              },
+              "left": 250,
+              "top": 20,
+              "width": 960,
+              "height": 800
+            },
+            {
+              "_type": "UMLActorView",
+              "_id": "EA3a49e5901e47593fc3a80",
+              "_parent": {
+                "$ref": "EA3cd738405ea3f1836665c"
+              },
+              "visible": true,
+              "enabled": true,
+              "font": "Arial;13;0",
+              "model": {
+                "$ref": "EA3184fc73f745c08f98bbc"
+              },
+              "left": 40,
+              "top": 70,
+              "width": 150,
+              "height": 120,
+              "suppressAttributes": true,
+              "suppressOperations": true
+            },
+            {
+              "_type": "UMLActorView",
+              "_id": "EA34ddb6cf6b586bb0e45f9",
+              "_parent": {
+                "$ref": "EA3cd738405ea3f1836665c"
+              },
+              "visible": true,
+              "enabled": true,
+              "font": "Arial;13;0",
+              "model": {
+                "$ref": "EA3fb59e2de3534a3a00cdb"
+              },
+              "left": 40,
+              "top": 470,
+              "width": 150,
+              "height": 120,
+              "suppressAttributes": true,
+              "suppressOperations": true
+            },
+            {
+              "_type": "UMLUseCaseView",
+              "_id": "EA3a37c01c1d1fad34c11f4",
+              "_parent": {
+                "$ref": "EA3cd738405ea3f1836665c"
+              },
+              "visible": true,
+              "enabled": true,
+              "font": "Arial;13;0",
+              "model": {
+                "$ref": "EA3e5144130dbd02c5c9551"
+              },
+              "left": 420,
+              "top": 88,
+              "width": 340,
+              "height": 84,
+              "suppressAttributes": true,
+              "suppressOperations": true,
+              "wordWrap": true,
+              "fillColor": "#FFF3E0",
+              "fontColor": "#000000"
+            },
+            {
+              "_type": "UMLUseCaseView",
+              "_id": "EA31abbfe9efd1b82831d5f",
+              "_parent": {
+                "$ref": "EA3cd738405ea3f1836665c"
+              },
+              "visible": true,
+              "enabled": true,
+              "font": "Arial;13;0",
+              "model": {
+                "$ref": "EA367b4568e2378987cfceb"
+              },
+              "left": 420,
+              "top": 248,
+              "width": 340,
+              "height": 84,
+              "suppressAttributes": true,
+              "suppressOperations": true,
+              "wordWrap": true
+            },
+            {
+              "_type": "UMLUseCaseView",
+              "_id": "EA3df994ebeade534ec9d8b",
+              "_parent": {
+                "$ref": "EA3cd738405ea3f1836665c"
+              },
+              "visible": true,
+              "enabled": true,
+              "font": "Arial;13;0",
+              "model": {
+                "$ref": "EA309b1691af58fd1ea4d83"
+              },
+              "left": 420,
+              "top": 408,
+              "width": 340,
+              "height": 84,
+              "suppressAttributes": true,
+              "suppressOperations": true,
+              "wordWrap": true
+            },
+            {
+              "_type": "UMLUseCaseView",
+              "_id": "EA3d2bc519c10a753bbdc5e",
+              "_parent": {
+                "$ref": "EA3cd738405ea3f1836665c"
+              },
+              "visible": true,
+              "enabled": true,
+              "font": "Arial;13;0",
+              "model": {
+                "$ref": "EA3fe50a2d0d1ca20614e8e"
+              },
+              "left": 420,
+              "top": 568,
+              "width": 340,
+              "height": 84,
+              "suppressAttributes": true,
+              "suppressOperations": true,
+              "wordWrap": true
+            },
+            {
+              "_type": "UMLUseCaseView",
+              "_id": "EA3c4e6139aedb4e71d0ffa",
+              "_parent": {
+                "$ref": "EA3cd738405ea3f1836665c"
+              },
+              "visible": true,
+              "enabled": true,
+              "font": "Arial;13;0",
+              "model": {
+                "$ref": "EA34206e4b0ee4d759947ca"
+              },
+              "left": 420,
+              "top": 728,
+              "width": 340,
+              "height": 84,
+              "suppressAttributes": true,
+              "suppressOperations": true,
+              "wordWrap": true
+            },
+            {
+              "_type": "UMLUseCaseView",
+              "_id": "EA38790237dfe8f7e6b32c2",
+              "_parent": {
+                "$ref": "EA3cd738405ea3f1836665c"
+              },
+              "visible": true,
+              "enabled": true,
+              "font": "Arial;13;0",
+              "model": {
+                "$ref": "EA36b804ec0571715911d8a"
+              },
+              "left": 890,
+              "top": 52,
+              "width": 300,
+              "height": 76,
+              "suppressAttributes": true,
+              "suppressOperations": true,
+              "wordWrap": true
+            },
+            {
+              "_type": "UMLUseCaseView",
+              "_id": "EA3600a1033b78e1006abf9",
+              "_parent": {
+                "$ref": "EA3cd738405ea3f1836665c"
+              },
+              "visible": true,
+              "enabled": true,
+              "font": "Arial;13;0",
+              "model": {
+                "$ref": "EA3e3a644ed20ad51824cab"
+              },
+              "left": 890,
+              "top": 167,
+              "width": 300,
+              "height": 76,
+              "suppressAttributes": true,
+              "suppressOperations": true,
+              "wordWrap": true
+            },
+            {
+              "_type": "UMLUseCaseView",
+              "_id": "EA391724e9eafa30dad78b5",
+              "_parent": {
+                "$ref": "EA3cd738405ea3f1836665c"
+              },
+              "visible": true,
+              "enabled": true,
+              "font": "Arial;13;0",
+              "model": {
+                "$ref": "EA33e84610b083e9578ff31"
+              },
+              "left": 890,
+              "top": 292,
+              "width": 300,
+              "height": 76,
+              "suppressAttributes": true,
+              "suppressOperations": true,
+              "wordWrap": true
+            },
+            {
+              "_type": "UMLNoteView",
+              "_id": "EA320e98426b40a1612d2c9",
+              "_parent": {
+                "$ref": "EA3cd738405ea3f1836665c"
+              },
+              "visible": true,
+              "enabled": true,
+              "font": "Arial;13;0",
+              "left": 800,
+              "top": 470,
+              "width": 390,
+              "height": 130,
+              "text": "Restricción transversal (no es un caso de uso): toda operación exige sesión activa (cookie HttpOnly) y rol ADMIN u OPERADOR; solo ADMIN anula. Implementada con requiereSesion y requiereRol en app.js.",
+              "wordWrap": true,
+              "fillColor": "#FFFBE6",
+              "fontColor": "#000000"
+            },
+            {
+              "_type": "UMLNoteView",
+              "_id": "EA39ab4d5b87209e8e61a8a",
+              "_parent": {
+                "$ref": "EA3cd738405ea3f1836665c"
+              },
+              "visible": true,
+              "enabled": true,
+              "font": "Arial;13;0",
+              "left": 800,
+              "top": 630,
+              "width": 390,
+              "height": 150,
+              "text": "«extend» CU3-03 → CU3-02: al elegir un pago del historial; el comprobante también se muestra tras registrar un pago. Los pagos no modifican la vigencia del vehículo ni bloquean entradas.",
+              "wordWrap": true,
+              "fillColor": "#FFFBE6",
+              "fontColor": "#000000"
+            },
+            {
+              "_type": "UMLGeneralizationView",
+              "_id": "EA33b8da205dbbbae79f487",
+              "_parent": {
+                "$ref": "EA3cd738405ea3f1836665c"
+              },
+              "visible": true,
+              "enabled": true,
+              "font": "Arial;13;0",
+              "model": {
+                "$ref": "EA3fee3afd572c48a521c3f"
+              },
+              "tail": {
+                "$ref": "EA3a49e5901e47593fc3a80"
+              },
+              "head": {
+                "$ref": "EA34ddb6cf6b586bb0e45f9"
+              },
+              "points": "115:190;115:470",
+              "lineStyle": 1
+            },
+            {
+              "_type": "UMLAssociationView",
+              "_id": "EA37c7b4e2ef185d16397ac",
+              "_parent": {
+                "$ref": "EA3cd738405ea3f1836665c"
+              },
+              "visible": true,
+              "enabled": true,
+              "font": "Arial;13;0",
+              "model": {
+                "$ref": "EA3cfc6f5c0f0f1fd526a50"
+              },
+              "tail": {
+                "$ref": "EA3a49e5901e47593fc3a80"
+              },
+              "head": {
+                "$ref": "EA3a37c01c1d1fad34c11f4"
+              },
+              "points": "190:130;420:130",
+              "lineStyle": 1
+            },
+            {
+              "_type": "UMLAssociationView",
+              "_id": "EA3d3ceef6b737f4bf33767",
+              "_parent": {
+                "$ref": "EA3cd738405ea3f1836665c"
+              },
+              "visible": true,
+              "enabled": true,
+              "font": "Arial;13;0",
+              "model": {
+                "$ref": "EA32006d96ab3268d8601ce"
+              },
+              "tail": {
+                "$ref": "EA34ddb6cf6b586bb0e45f9"
+              },
+              "head": {
+                "$ref": "EA31abbfe9efd1b82831d5f"
+              },
+              "points": "190:492;515:328",
+              "lineStyle": 1
+            },
+            {
+              "_type": "UMLAssociationView",
+              "_id": "EA39cd2c1a484462274db28",
+              "_parent": {
+                "$ref": "EA3cd738405ea3f1836665c"
+              },
+              "visible": true,
+              "enabled": true,
+              "font": "Arial;13;0",
+              "model": {
+                "$ref": "EA3330b01160de633149c26"
+              },
+              "tail": {
+                "$ref": "EA34ddb6cf6b586bb0e45f9"
+              },
+              "head": {
+                "$ref": "EA3df994ebeade534ec9d8b"
+              },
+              "points": "190:517;450:474",
+              "lineStyle": 1
+            },
+            {
+              "_type": "UMLAssociationView",
+              "_id": "EA31a528856792c62cd44ee",
+              "_parent": {
+                "$ref": "EA3cd738405ea3f1836665c"
+              },
+              "visible": true,
+              "enabled": true,
+              "font": "Arial;13;0",
+              "model": {
+                "$ref": "EA3935d79cbe5926b218396"
+              },
+              "tail": {
+                "$ref": "EA34ddb6cf6b586bb0e45f9"
+              },
+              "head": {
+                "$ref": "EA3d2bc519c10a753bbdc5e"
+              },
+              "points": "190:543;450:586",
+              "lineStyle": 1
+            },
+            {
+              "_type": "UMLAssociationView",
+              "_id": "EA39cbba22335474b9e3587",
+              "_parent": {
+                "$ref": "EA3cd738405ea3f1836665c"
+              },
+              "visible": true,
+              "enabled": true,
+              "font": "Arial;13;0",
+              "model": {
+                "$ref": "EA3031c17572f39053d7d69"
+              },
+              "tail": {
+                "$ref": "EA34ddb6cf6b586bb0e45f9"
+              },
+              "head": {
+                "$ref": "EA3c4e6139aedb4e71d0ffa"
+              },
+              "points": "190:568;515:732",
+              "lineStyle": 1
+            },
+            {
+              "_type": "UMLIncludeView",
+              "_id": "EA382022386984c52969b82",
+              "_parent": {
+                "$ref": "EA3cd738405ea3f1836665c"
+              },
+              "visible": true,
+              "enabled": true,
+              "font": "Arial;13;0",
+              "model": {
+                "$ref": "EA38a4b8cff5bb1743c7cd8"
+              },
+              "tail": {
+                "$ref": "EA3a37c01c1d1fad34c11f4"
+              },
+              "head": {
+                "$ref": "EA38790237dfe8f7e6b32c2"
+              },
+              "points": "750:116;898:103",
+              "lineStyle": 1
+            },
+            {
+              "_type": "UMLIncludeView",
+              "_id": "EA36679bd29430928410725",
+              "_parent": {
+                "$ref": "EA3cd738405ea3f1836665c"
+              },
+              "visible": true,
+              "enabled": true,
+              "font": "Arial;13;0",
+              "model": {
+                "$ref": "EA3670df4d8a99ab11ffb3c"
+              },
+              "tail": {
+                "$ref": "EA3a37c01c1d1fad34c11f4"
+              },
+              "head": {
+                "$ref": "EA3600a1033b78e1006abf9"
+              },
+              "points": "731:153;915:184",
+              "lineStyle": 1
+            },
+            {
+              "_type": "UMLIncludeView",
+              "_id": "EA31ecf01870a3dd9e192d3",
+              "_parent": {
+                "$ref": "EA3cd738405ea3f1836665c"
+              },
+              "visible": true,
+              "enabled": true,
+              "font": "Arial;13;0",
+              "model": {
+                "$ref": "EA3d7ca97b6773f1be88621"
+              },
+              "tail": {
+                "$ref": "EA31abbfe9efd1b82831d5f"
+              },
+              "head": {
+                "$ref": "EA3600a1033b78e1006abf9"
+              },
+              "points": "725:264;920:228",
+              "lineStyle": 1
+            },
+            {
+              "_type": "UMLIncludeView",
+              "_id": "EA3c9b1651a65fe21c3b25a",
+              "_parent": {
+                "$ref": "EA3cd738405ea3f1836665c"
+              },
+              "visible": true,
+              "enabled": true,
+              "font": "Arial;13;0",
+              "model": {
+                "$ref": "EA39cd21d115237d61ac6ea"
+              },
+              "tail": {
+                "$ref": "EA31abbfe9efd1b82831d5f"
+              },
+              "head": {
+                "$ref": "EA391724e9eafa30dad78b5"
+              },
+              "points": "750:304;898:317",
+              "lineStyle": 1
+            },
+            {
+              "_type": "UMLExtendView",
+              "_id": "EA32ba5c808723f05580b2b",
+              "_parent": {
+                "$ref": "EA3cd738405ea3f1836665c"
+              },
+              "visible": true,
+              "enabled": true,
+              "font": "Arial;13;0",
+              "model": {
+                "$ref": "EA318c94a4cb4d3fcd6f6c7"
+              },
+              "tail": {
+                "$ref": "EA3d2bc519c10a753bbdc5e"
+              },
+              "head": {
+                "$ref": "EA3df994ebeade534ec9d8b"
+              },
+              "points": "590:568;590:492",
+              "lineStyle": 1
+            }
+          ]
+        },
+        {
+          "_type": "UMLUseCaseSubject",
+          "_id": "EA38be9b47f4b285daf49e3",
+          "_parent": {
+            "$ref": "EA3633ed6283baa044595ea"
+          },
+          "name": "Sistema Autos Colombia · Módulo de pagos"
+        },
+        {
+          "_type": "UMLActor",
+          "_id": "EA3184fc73f745c08f98bbc",
+          "_parent": {
+            "$ref": "EA3633ed6283baa044595ea"
+          },
+          "name": "Administrador (ADMIN)"
+        },
+        {
+          "_type": "UMLActor",
+          "_id": "EA3fb59e2de3534a3a00cdb",
+          "_parent": {
+            "$ref": "EA3633ed6283baa044595ea"
+          },
+          "name": "Operador (OPERADOR)"
+        },
+        {
+          "_type": "UMLUseCase",
+          "_id": "EA3e5144130dbd02c5c9551",
+          "_parent": {
+            "$ref": "EA3633ed6283baa044595ea"
+          },
+          "name": "CU3-05 Anular pago (solo ADMIN)"
+        },
+        {
+          "_type": "UMLUseCase",
+          "_id": "EA367b4568e2378987cfceb",
+          "_parent": {
+            "$ref": "EA3633ed6283baa044595ea"
+          },
+          "name": "CU3-01 Registrar pago de mensualidad"
+        },
+        {
+          "_type": "UMLUseCase",
+          "_id": "EA309b1691af58fd1ea4d83",
+          "_parent": {
+            "$ref": "EA3633ed6283baa044595ea"
+          },
+          "name": "CU3-02 Consultar historial de pagos"
+        },
+        {
+          "_type": "UMLUseCase",
+          "_id": "EA3fe50a2d0d1ca20614e8e",
+          "_parent": {
+            "$ref": "EA3633ed6283baa044595ea"
+          },
+          "name": "CU3-03 Consultar comprobante"
+        },
+        {
+          "_type": "UMLUseCase",
+          "_id": "EA34206e4b0ee4d759947ca",
+          "_parent": {
+            "$ref": "EA3633ed6283baa044595ea"
+          },
+          "name": "CU3-04 Consultar cartera pendiente"
+        },
+        {
+          "_type": "UMLUseCase",
+          "_id": "EA36b804ec0571715911d8a",
+          "_parent": {
+            "$ref": "EA3633ed6283baa044595ea"
+          },
+          "name": "Validar motivo de anulación"
+        },
+        {
+          "_type": "UMLUseCase",
+          "_id": "EA3e3a644ed20ad51824cab",
+          "_parent": {
+            "$ref": "EA3633ed6283baa044595ea"
+          },
+          "name": "Registrar auditoría"
+        },
+        {
+          "_type": "UMLUseCase",
+          "_id": "EA33e84610b083e9578ff31",
+          "_parent": {
+            "$ref": "EA3633ed6283baa044595ea"
+          },
+          "name": "Validar datos del pago"
+        },
+        {
+          "_type": "UMLGeneralization",
+          "_id": "EA3fee3afd572c48a521c3f",
+          "_parent": {
+            "$ref": "EA3633ed6283baa044595ea"
+          },
+          "name": "",
+          "source": {
+            "$ref": "EA3184fc73f745c08f98bbc"
+          },
+          "target": {
+            "$ref": "EA3fb59e2de3534a3a00cdb"
+          }
+        },
+        {
+          "_type": "UMLExtend",
+          "_id": "EA318c94a4cb4d3fcd6f6c7",
+          "_parent": {
+            "$ref": "EA3633ed6283baa044595ea"
+          },
+          "name": "",
+          "source": {
+            "$ref": "EA3fe50a2d0d1ca20614e8e"
+          },
+          "target": {
+            "$ref": "EA309b1691af58fd1ea4d83"
+          }
+        },
+        {
+          "_type": "UMLAssociation",
+          "_id": "EA3cfc6f5c0f0f1fd526a50",
+          "_parent": {
+            "$ref": "EA3633ed6283baa044595ea"
+          },
+          "name": "",
+          "end1": {
+            "_type": "UMLAssociationEnd",
+            "_id": "EA32b17a227882fd33e1306",
+            "_parent": {
+              "$ref": "EA3cfc6f5c0f0f1fd526a50"
+            },
+            "reference": {
+              "$ref": "EA3184fc73f745c08f98bbc"
+            }
+          },
+          "end2": {
+            "_type": "UMLAssociationEnd",
+            "_id": "EA3b0037e1880fc995d1bbb",
+            "_parent": {
+              "$ref": "EA3cfc6f5c0f0f1fd526a50"
+            },
+            "reference": {
+              "$ref": "EA3e5144130dbd02c5c9551"
+            }
+          }
+        },
+        {
+          "_type": "UMLAssociation",
+          "_id": "EA32006d96ab3268d8601ce",
+          "_parent": {
+            "$ref": "EA3633ed6283baa044595ea"
+          },
+          "name": "",
+          "end1": {
+            "_type": "UMLAssociationEnd",
+            "_id": "EA32b04ba43a2f045237db4",
+            "_parent": {
+              "$ref": "EA32006d96ab3268d8601ce"
+            },
+            "reference": {
+              "$ref": "EA3fb59e2de3534a3a00cdb"
+            }
+          },
+          "end2": {
+            "_type": "UMLAssociationEnd",
+            "_id": "EA3682072d070a575b8a3b3",
+            "_parent": {
+              "$ref": "EA32006d96ab3268d8601ce"
+            },
+            "reference": {
+              "$ref": "EA367b4568e2378987cfceb"
+            }
+          }
+        },
+        {
+          "_type": "UMLAssociation",
+          "_id": "EA3330b01160de633149c26",
+          "_parent": {
+            "$ref": "EA3633ed6283baa044595ea"
+          },
+          "name": "",
+          "end1": {
+            "_type": "UMLAssociationEnd",
+            "_id": "EA372c2ea6a82a5c3264135",
+            "_parent": {
+              "$ref": "EA3330b01160de633149c26"
+            },
+            "reference": {
+              "$ref": "EA3fb59e2de3534a3a00cdb"
+            }
+          },
+          "end2": {
+            "_type": "UMLAssociationEnd",
+            "_id": "EA3f285d43ca606a68a9fac",
+            "_parent": {
+              "$ref": "EA3330b01160de633149c26"
+            },
+            "reference": {
+              "$ref": "EA309b1691af58fd1ea4d83"
+            }
+          }
+        },
+        {
+          "_type": "UMLAssociation",
+          "_id": "EA3935d79cbe5926b218396",
+          "_parent": {
+            "$ref": "EA3633ed6283baa044595ea"
+          },
+          "name": "",
+          "end1": {
+            "_type": "UMLAssociationEnd",
+            "_id": "EA33e7669b406811b42eab9",
+            "_parent": {
+              "$ref": "EA3935d79cbe5926b218396"
+            },
+            "reference": {
+              "$ref": "EA3fb59e2de3534a3a00cdb"
+            }
+          },
+          "end2": {
+            "_type": "UMLAssociationEnd",
+            "_id": "EA32abc0b5816b66deb3cc8",
+            "_parent": {
+              "$ref": "EA3935d79cbe5926b218396"
+            },
+            "reference": {
+              "$ref": "EA3fe50a2d0d1ca20614e8e"
+            }
+          }
+        },
+        {
+          "_type": "UMLAssociation",
+          "_id": "EA3031c17572f39053d7d69",
+          "_parent": {
+            "$ref": "EA3633ed6283baa044595ea"
+          },
+          "name": "",
+          "end1": {
+            "_type": "UMLAssociationEnd",
+            "_id": "EA36addde3242bdb609ffc8",
+            "_parent": {
+              "$ref": "EA3031c17572f39053d7d69"
+            },
+            "reference": {
+              "$ref": "EA3fb59e2de3534a3a00cdb"
+            }
+          },
+          "end2": {
+            "_type": "UMLAssociationEnd",
+            "_id": "EA34b5c6b38c8646e637e7e",
+            "_parent": {
+              "$ref": "EA3031c17572f39053d7d69"
+            },
+            "reference": {
+              "$ref": "EA34206e4b0ee4d759947ca"
+            }
+          }
+        },
+        {
+          "_type": "UMLInclude",
+          "_id": "EA38a4b8cff5bb1743c7cd8",
+          "_parent": {
+            "$ref": "EA3633ed6283baa044595ea"
+          },
+          "name": "",
+          "source": {
+            "$ref": "EA3e5144130dbd02c5c9551"
+          },
+          "target": {
+            "$ref": "EA36b804ec0571715911d8a"
+          }
+        },
+        {
+          "_type": "UMLInclude",
+          "_id": "EA3670df4d8a99ab11ffb3c",
+          "_parent": {
+            "$ref": "EA3633ed6283baa044595ea"
+          },
+          "name": "",
+          "source": {
+            "$ref": "EA3e5144130dbd02c5c9551"
+          },
+          "target": {
+            "$ref": "EA3e3a644ed20ad51824cab"
+          }
+        },
+        {
+          "_type": "UMLInclude",
+          "_id": "EA3d7ca97b6773f1be88621",
+          "_parent": {
+            "$ref": "EA3633ed6283baa044595ea"
+          },
+          "name": "",
+          "source": {
+            "$ref": "EA367b4568e2378987cfceb"
+          },
+          "target": {
+            "$ref": "EA3e3a644ed20ad51824cab"
+          }
+        },
+        {
+          "_type": "UMLInclude",
+          "_id": "EA39cd21d115237d61ac6ea",
+          "_parent": {
+            "$ref": "EA3633ed6283baa044595ea"
+          },
+          "name": "",
+          "source": {
+            "$ref": "EA367b4568e2378987cfceb"
+          },
+          "target": {
+            "$ref": "EA33e84610b083e9578ff31"
+          }
+        }
+      ]
+    }
+  ]
+}
